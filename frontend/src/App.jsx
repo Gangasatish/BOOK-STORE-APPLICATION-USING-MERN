@@ -27,6 +27,9 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-gray-100">
         <Navbar />
+        <div className="bg-red-500 text-white py-3 px-4 text-center font-bold text-lg">
+          🧪 VERCEL DEPLOYMENT TEST - VERSION 1 🧪
+        </div>
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
