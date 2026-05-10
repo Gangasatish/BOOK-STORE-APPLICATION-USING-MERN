@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import api from '../lib/api';
+import Breadcrumbs from '../components/Breadcrumbs';
+import SEO from '../components/SEO';
 
 const SellWithUs = () => {
     const [form, setForm] = useState({
@@ -57,6 +59,13 @@ const SellWithUs = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+            <SEO
+                title="Sell With Us | LuminaReads"
+                description="Partner with LuminaReads to sell books and publish your titles through our online bookstore marketplace. Submit your book details today."
+                url="https://luminareads.com/sell-with-us"
+                keywords="sell books online, author collaboration, book publishing, partner with bookstore"
+            />
+            <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Sell With Us' }]} />
             <div className="mb-8">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Sell Your Book With Us</h1>
                 <p className="text-gray-600 dark:text-gray-300 mt-2">

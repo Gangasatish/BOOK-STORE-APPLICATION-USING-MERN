@@ -3,6 +3,7 @@ import { motion as Motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import SkeletonCard from '../components/SkeletonCard';
+import SEO from '../components/SEO';
 import { ArrowRight } from 'lucide-react';
 import api from '../lib/api';
 
@@ -10,6 +11,8 @@ const Home = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [newsletterEmail, setNewsletterEmail] = useState('');
+    const [newsletterSent, setNewsletterSent] = useState(false);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -25,8 +28,22 @@ const Home = () => {
         fetchBooks();
     }, []);
 
+    const handleNewsletterSubmit = (e) => {
+        e.preventDefault();
+        if (!newsletterEmail.trim()) return;
+        setNewsletterSent(true);
+        setNewsletterEmail('');
+    };
+
     return (
         <div>
+            <SEO
+                title="LuminaReads | Discover Your Next Great Read"
+                description="Explore thousands of books across every genre and purchase your next favorite title from LuminaReads. Fast shipping and secure checkout."
+                url="https://luminareads.com/"
+                image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
+                keywords="online bookstore, buy books online, best books, fiction books, non-fiction books"
+            />
             {/* Hero Section */}
             <section className="bg-primary-50 dark:bg-dark-surface overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
@@ -114,6 +131,33 @@ const Home = () => {
                             </Link>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* Newsletter Signup */}
+            <section className="py-16 bg-primary-600 text-white">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay updated with new arrivals and offers</h2>
+                    <p className="max-w-2xl mx-auto text-gray-100 mb-8">
+                        Join our newsletter for curated book picks, exclusive discounts, and reading recommendations delivered straight to your inbox.
+                    </p>
+                    <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <input
+                            type="email"
+                            value={newsletterEmail}
+                            onChange={(e) => setNewsletterEmail(e.target.value)}
+                            placeholder="Enter your email address"
+                            className="w-full sm:max-w-xl px-5 py-4 rounded-full border border-white/20 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                            aria-label="Email for newsletter signup"
+                            required
+                        />
+                        <button type="submit" className="inline-flex items-center justify-center bg-white text-primary-600 font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors w-full sm:w-auto">
+                            Subscribe
+                        </button>
+                    </form>
+                    {newsletterSent && (
+                        <p className="mt-5 text-sm text-white/90">Thanks! You’re now on the list for exclusive book updates.</p>
+                    )}
                 </div>
             </section>
         </div>

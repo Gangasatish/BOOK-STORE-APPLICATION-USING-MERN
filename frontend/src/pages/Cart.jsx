@@ -7,6 +7,7 @@ import api from '../lib/api';
 import { safeReadJSON } from '../utils/storage';
 import { handleBookImageError } from '../utils/imageFallback';
 import { formatINR } from '../utils/currency';
+import SEO from '../components/SEO';
 
 const Cart = () => {
     const navigate = useNavigate();
@@ -107,6 +108,12 @@ const Cart = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
+            <SEO
+                title="Shopping Cart | LuminaReads"
+                description="Review your selected books, update quantities, and proceed to checkout securely with LuminaReads."
+                url="https://luminareads.com/cart"
+                noindex
+            />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Shopping Cart</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

@@ -1,12 +1,19 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion as Motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Receipt } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const OrderSuccess = () => {
     const { id } = useParams();
 
     return (
         <div className="min-h-screen bg-linear-to-br from-emerald-50 via-white to-blue-50 flex items-center justify-center px-4">
+            <SEO
+                title="Order Confirmation | LuminaReads"
+                description="Your order is confirmed and being processed. Thank you for choosing LuminaReads for your book purchase."
+                url={`https://luminareads.com/order-success/${id}`}
+                noindex
+            />
             <Motion.div
                 initial={{ opacity: 0, y: 30, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}

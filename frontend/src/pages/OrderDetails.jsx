@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import api from '../lib/api';
 import useAuthStore from '../store/useAuthStore';
 import { formatINR } from '../utils/currency';
+import SEO from '../components/SEO';
 
 const OrderDetails = () => {
     const { id } = useParams();
@@ -13,9 +14,10 @@ const OrderDetails = () => {
     const [error, setError] = useState('');
     const [updating, setUpdating] = useState(false);
 
-    const config = userInfo
-        ? { headers: { Authorization: `Bearer ${userInfo.token}` } }
-        : {};
+    const config = useMemo(
+        () => (userInfo ? { headers: { Authorization: `Bearer ${userInfo.token}` } } : {}),
+        [userInfo]
+    );
 
     useEffect(() => {
         if (!userInfo) {
@@ -37,7 +39,7 @@ const OrderDetails = () => {
         };
 
         fetchOrder();
-    }, [id, userInfo, navigate]);
+    }, [id, userInfo, navigate, config]);
 
     const cancelOrder = async () => {
         const reason = window.prompt('Reason for cancellation (optional):', '');
@@ -58,6 +60,12 @@ const OrderDetails = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
+            <SEO
+                title={`Order ${id} | LuminaReads`}
+                description="View your order details and shipment status securely in your LuminaReads account."
+                url={`https://luminareads.com/orders/${id}`}
+                noindex
+            />
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Order Details</h1>
                 <Link to="/account" className="text-primary-600 hover:underline">Back to account</Link>

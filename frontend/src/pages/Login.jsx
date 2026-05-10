@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import useAuthStore from '../store/useAuthStore';
 import { BookOpen } from 'lucide-react';
 import api from '../lib/api';
+import SEO from '../components/SEO';
 
 const Login = ({ adminMode = false }) => {
     const [email, setEmail] = useState('');
@@ -56,6 +57,12 @@ const Login = ({ adminMode = false }) => {
 
     return (
         <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-dark-bg">
+            <SEO
+                title={adminMode ? 'Admin Login | LuminaReads' : isRegister ? 'Register | LuminaReads' : 'Login | LuminaReads'}
+                description={adminMode ? 'Admin login for LuminaReads staff access.' : 'Login or register to manage your LuminaReads account and track orders.'}
+                url={adminMode ? 'https://luminareads.com/admin/login' : `https://luminareads.com/login`}
+                noindex
+            />
             <div className="max-w-md w-full space-y-8 bg-white dark:bg-dark-surface p-10 rounded-3xl shadow-xl border border-gray-100 dark:border-dark-border">
                 <div className="text-center">
                     <BookOpen className="h-12 w-12 text-primary-600 mx-auto" />

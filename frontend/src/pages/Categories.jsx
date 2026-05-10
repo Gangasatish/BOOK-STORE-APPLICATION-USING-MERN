@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import Breadcrumbs from '../components/Breadcrumbs';
+import SEO from '../components/SEO';
 
 const categories = [
     'Fiction',
@@ -16,6 +18,13 @@ const categories = [
 const Categories = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+            <SEO
+                title="Browse Book Categories | LuminaReads"
+                description="Explore book categories and browse titles by genre on LuminaReads. Find fiction, fantasy, romance, mystery, and more."
+                url="https://luminareads.com/categories"
+                keywords="book categories, fiction, romance, fantasy, mystery, bookstore"
+            />
+            <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Categories</h1>
             <p className="text-gray-500 dark:text-gray-400 mb-8">Pick a category to view matching books.</p>
 

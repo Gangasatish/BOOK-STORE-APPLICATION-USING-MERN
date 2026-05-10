@@ -8,7 +8,6 @@ Allow: /categories
 Allow: /about
 Allow: /contact
 Allow: /faq
-Allow: /blog
 Disallow: /admin
 Disallow: /account
 Disallow: /admin/

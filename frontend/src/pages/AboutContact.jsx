@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Award, Users, BookOpen, Zap } from 'lucide-react';
+import Breadcrumbs from '../components/Breadcrumbs';
+import SEO from '../components/SEO';
 
 const AboutContact = () => {
     const whatsappUrl = 'https://wa.me/919032729367?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
@@ -31,8 +33,15 @@ const AboutContact = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
+            <SEO
+                title="About LuminaReads | Your Online Bookstore"
+                description="Learn about LuminaReads, a curated bookstore for readers seeking bestselling and niche titles. Contact us for orders, support, and publishing inquiries."
+                url="https://luminareads.com/about"
+                keywords="online bookstore, book delivery, bookshop contact, reading community, customer support"
+            />
+            <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'About' }]} />
             {/* Hero Section */}
-            <section className="bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-900 dark:to-primary-950 text-white py-16 md:py-20">
+            <section className="bg-linear-to-r from-primary-600 to-primary-800 dark:from-primary-900 dark:to-primary-950 text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">About LuminaReads</h1>
                     <p className="text-xl text-primary-100 max-w-2xl mx-auto">
@@ -187,7 +196,7 @@ const AboutContact = () => {
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Contact Information</h3>
                             <div className="space-y-6">
                                 <div className="flex gap-4">
-                                    <div className="flex-shrink-0">
+                                    <div className="shrink-0">
                                         <MapPin className="h-6 w-6 text-primary-600 dark:text-primary-400 mt-1" aria-hidden="true" />
                                     </div>
                                     <div>
@@ -198,7 +207,7 @@ const AboutContact = () => {
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <div className="flex-shrink-0">
+                                    <div className="shrink-0">
                                         <Phone className="h-6 w-6 text-primary-600 dark:text-primary-400 mt-1" aria-hidden="true" />
                                     </div>
                                     <div>
@@ -209,7 +218,7 @@ const AboutContact = () => {
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <div className="flex-shrink-0">
+                                    <div className="shrink-0">
                                         <Mail className="h-6 w-6 text-primary-600 dark:text-primary-400 mt-1" aria-hidden="true" />
                                     </div>
                                     <div>

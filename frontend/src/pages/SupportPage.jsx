@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import Breadcrumbs from '../components/Breadcrumbs';
+import SEO from '../components/SEO';
 
 const topicContent = {
     faq: {
@@ -29,9 +31,17 @@ const topicContent = {
 
 const SupportPage = ({ topic = 'faq' }) => {
     const content = topicContent[topic] || topicContent.faq;
+    const url = `https://luminareads.com/${topic}`;
 
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
+            <SEO
+                title={`${content.title} | LuminaReads`}
+                description={`Get answers to common questions about shipping, returns, and order support from LuminaReads.`}
+                url={url}
+                keywords="bookstore support, shipping policy, returns policy, book order help"
+            />
+            <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: content.title }]} />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">{content.title}</h1>
 
             <div className="space-y-4">

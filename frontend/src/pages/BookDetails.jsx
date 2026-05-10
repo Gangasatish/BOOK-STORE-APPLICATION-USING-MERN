@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
+import Breadcrumbs from '../components/Breadcrumbs';
+import SEO from '../components/SEO';
 import { ArrowLeft, ShoppingCart, Check, ShieldCheck, Truck } from 'lucide-react';
 import useCartStore from '../store/useCartStore';
 import api from '../lib/api';
@@ -42,6 +44,14 @@ const BookDetails = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <SEO
+                title={`${book.title} | LuminaReads`}
+                description={book.description?.slice(0, 155) || 'Explore this book on LuminaReads. Read reviews, check stock, and order today.'}
+                url={`https://luminareads.com/book/${book._id}`}
+                image={book.image}
+                keywords={`${book.category}, buy ${book.title}, ${book.author}, online bookstore`}
+            />
+            <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop', path: '/shop' }, { label: book.title }]} />
             <Link to="/shop" className="inline-flex items-center gap-2 text-gray-500 hover:text-primary-600 transition-colors mb-8 group">
                 <ArrowLeft className="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" />
                 Back to Shop

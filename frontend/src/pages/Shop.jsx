@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import SkeletonCard from '../components/SkeletonCard';
+import Breadcrumbs from '../components/Breadcrumbs';
+import SEO from '../components/SEO';
 import { Filter } from 'lucide-react';
 import api from '../lib/api';
 
@@ -41,6 +43,13 @@ const Shop = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
+            <SEO
+                title={keyword ? `Search results for ${keyword} - LuminaReads` : 'Shop Books Online | LuminaReads'}
+                description={keyword ? `Search results for ${keyword} on LuminaReads. Browse our book collection across genres with fast delivery.` : 'Browse our full book collection across genres and find the perfect book for your next read on LuminaReads.'}
+                url={keyword ? `https://luminareads.com/shop?keyword=${encodeURIComponent(keyword)}` : 'https://luminareads.com/shop'}
+                keywords="buy books online, book categories, book shop, reading books"
+            />
+            <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop' }]} />
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                 <div>
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white">

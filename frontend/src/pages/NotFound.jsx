@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Home } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const NotFound = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 dark:from-dark-bg dark:to-dark-surface px-4">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary-50 to-primary-100 dark:from-dark-bg dark:to-dark-surface px-4">
+            <SEO
+                title="404 Page Not Found | LuminaReads"
+                description="The page you are looking for is not available. Return to LuminaReads home to continue browsing great books."
+                url="https://luminareads.com/404"
+                noindex
+            />
             <div className="max-w-2xl text-center">
                 {/* 404 Illustration */}
                 <div className="mb-8">

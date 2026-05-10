@@ -4,6 +4,7 @@ import { Package, CreditCard, Truck, UserCircle, Search } from 'lucide-react';
 import api from '../lib/api';
 import useAuthStore from '../store/useAuthStore';
 import { formatINR } from '../utils/currency';
+import SEO from '../components/SEO';
 
 const Account = () => {
     const navigate = useNavigate();
@@ -128,6 +129,12 @@ const Account = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
+            <SEO
+                title="My Account | LuminaReads"
+                description="Manage your LuminaReads account, view recent orders, and update your profile details in one convenient dashboard."
+                url="https://luminareads.com/account"
+                noindex
+            />
             <div className="rounded-3xl bg-gradient-to-r from-slate-900 to-blue-900 text-white p-8 mb-8 shadow-xl">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                     <div className="flex items-center gap-4">
