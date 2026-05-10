@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Package, CreditCard, Truck, UserCircle, Search } from 'lucide-react';
 import api from '../lib/api';
@@ -20,9 +20,32 @@ const Account = () => {
     const [profileSaving, setProfileSaving] = useState(false);
     const [profileMessage, setProfileMessage] = useState('');
 
-    const config = userInfo
-        ? { headers: { Authorization: `Bearer ${userInfo.token}` } }
-        : {};
+    const config = useMemo(
+        () => (userInfo ? { headers: { Authorization: `Bearer ${userInfo.token}` } } : {}),
+        [userInfo]
+    );
+
+    const loadData = useCallback(async () => {
+        try {
+            setLoading(true);
+            const [profileRes, ordersRes] = await Promise.all([
+                api.get('/users/profile', config),
+                api.get('/orders/myorders?paginate=true&limit=100', config)
+            ]);
+            setProfile(profileRes.data);
+            setForm((prev) => ({
+                ...prev,
+                name: profileRes.data?.name || '',
+                email: profileRes.data?.email || ''
+            }));
+            setOrders(Array.isArray(ordersRes.data) ? ordersRes.data : (ordersRes.data?.items || []));
+            setError('');
+        } catch (err) {
+            setError(err.response?.data?.message || err.message);
+        } finally {
+            setLoading(false);
+        }
+    }, [config]);
 
     useEffect(() => {
         if (!userInfo) {
@@ -30,30 +53,8 @@ const Account = () => {
             return;
         }
 
-        const loadData = async () => {
-            try {
-                setLoading(true);
-                const [profileRes, ordersRes] = await Promise.all([
-                    api.get('/users/profile', config),
-                    api.get('/orders/myorders?paginate=true&limit=100', config)
-                ]);
-                setProfile(profileRes.data);
-                setForm((prev) => ({
-                    ...prev,
-                    name: profileRes.data?.name || '',
-                    email: profileRes.data?.email || ''
-                }));
-                setOrders(Array.isArray(ordersRes.data) ? ordersRes.data : (ordersRes.data?.items || []));
-                setError('');
-            } catch (err) {
-                setError(err.response?.data?.message || err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         loadData();
-    }, [userInfo, navigate]);
+    }, [loadData, navigate, userInfo]);
 
     const stats = useMemo(() => {
         const totalOrders = orders.length;

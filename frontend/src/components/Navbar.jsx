@@ -74,6 +74,12 @@ const Navbar = () => {
                                 Shop
                             </Link>
                         )}
+                        <Link to="/blog" className="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-500 font-medium transition-colors">
+                            Blog
+                        </Link>
+                        <Link to="/about" className="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-500 font-medium transition-colors">
+                            About
+                        </Link>
                         <Link to="/sell-with-us" className="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-500 font-medium transition-colors">
                             Sell With Us
                         </Link>
@@ -173,6 +179,12 @@ const Navbar = () => {
                             Shop
                         </Link>
                     )}
+                    <Link to="/blog" className="block text-gray-700 dark:text-gray-300 font-medium py-2 border-b dark:border-dark-border" onClick={() => setIsOpen(false)}>
+                        Blog
+                    </Link>
+                    <Link to="/about" className="block text-gray-700 dark:text-gray-300 font-medium py-2 border-b dark:border-dark-border" onClick={() => setIsOpen(false)}>
+                        About
+                    </Link>
                     <Link to="/sell-with-us" className="block text-gray-700 dark:text-gray-300 font-medium py-2 border-b dark:border-dark-border" onClick={() => setIsOpen(false)}>
                         Sell With Us
                     </Link>

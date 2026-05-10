@@ -4,6 +4,7 @@ import useAuthStore from '../store/useAuthStore';
 import { BookOpen } from 'lucide-react';
 import api from '../lib/api';
 import SEO from '../components/SEO';
+import { trackFormSubmit } from '../utils/analytics';
 
 const Login = ({ adminMode = false }) => {
     const [email, setEmail] = useState('');
@@ -41,12 +42,16 @@ const Login = ({ adminMode = false }) => {
             if (isRegister) {
                 const { data } = await api.post('/users', { name, email, password });
                 login(data);
+                // Track registration form submit
+                trackFormSubmit('user_registration', adminMode ? '/admin/login' : '/login');
             } else {
                 const { data } = await api.post('/users/login', { email, password });
                 if (adminMode && !data.isAdmin) {
                     throw new Error('This account is not an admin account');
                 }
                 login(data);
+                // Track login form submit
+                trackFormSubmit('user_login', adminMode ? '/admin/login' : '/login');
             }
         } catch (err) {
             setError(err.response && err.response.data.message ? err.response.data.message : err.message);

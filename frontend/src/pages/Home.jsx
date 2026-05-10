@@ -14,6 +14,19 @@ const Home = () => {
     const [newsletterEmail, setNewsletterEmail] = useState('');
     const [newsletterSent, setNewsletterSent] = useState(false);
 
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        'name': 'LuminaReads',
+        'url': 'https://luminareads.com/',
+        'description': 'Explore thousands of books across every genre and shop online at LuminaReads.',
+        'potentialAction': {
+            '@type': 'SearchAction',
+            'target': 'https://luminareads.com/shop?keyword={search_term}',
+            'query-input': 'required name=search_term'
+        }
+    };
+
     useEffect(() => {
         const fetchBooks = async () => {
             try {
@@ -43,6 +56,7 @@ const Home = () => {
                 url="https://luminareads.com/"
                 image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
                 keywords="online bookstore, buy books online, best books, fiction books, non-fiction books"
+                schema={schema}
             />
             {/* Hero Section */}
             <section className="bg-primary-50 dark:bg-dark-surface overflow-hidden">
@@ -80,6 +94,8 @@ const Home = () => {
                             <img
                                 src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop"
                                 alt="Reading"
+                                loading="lazy"
+                                decoding="async"
                                 className="rounded-2xl shadow-2xl object-cover h-[500px] w-full"
                             />
                         </Motion.div>
@@ -129,6 +145,48 @@ const Home = () => {
                             >
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">{cat}</h3>
                             </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Blog Teaser */}
+            <section className="py-16 bg-gray-50 dark:bg-dark-surface">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+                        <div>
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">From the LuminaReads Blog</h2>
+                            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mt-2">
+                                Get reading advice, genre guides, and book-buying tips to help you find your next favorite title.
+                            </p>
+                        </div>
+                        <Link to="/blog" className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-primary-700 transition-all">
+                            Visit Blog
+                        </Link>
+                    </div>
+
+                    <div className="grid gap-6 md:grid-cols-3">
+                        {[
+                            {
+                                title: 'How to Find the Perfect Book for Your Mood',
+                                excerpt: 'Discover smart ways to choose books that match your mood and reading goals.',
+                            },
+                            {
+                                title: 'Top 5 Must-Read Book Genres for Every Reader',
+                                excerpt: 'Explore the bestselling genres readers love, from fantasy to personal development.',
+                            },
+                            {
+                                title: 'Why Reading Daily Improves Focus and Creativity',
+                                excerpt: 'Learn how a small daily reading habit can transform focus and creative thinking.',
+                            },
+                        ].map((post, index) => (
+                            <article key={index} className="bg-white dark:bg-dark-bg rounded-3xl border border-gray-100 dark:border-dark-border p-6 shadow-sm hover:shadow-md transition-all">
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{post.title}</h3>
+                                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{post.excerpt}</p>
+                                <Link to="/blog" className="text-primary-600 hover:text-primary-700 font-semibold">
+                                    Read the article →
+                                </Link>
+                            </article>
                         ))}
                     </div>
                 </div>

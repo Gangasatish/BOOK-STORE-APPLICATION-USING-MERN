@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BookOpen, ShoppingCart, AlertTriangle, IndianRupee } from 'lucide-react';
 import api from '../lib/api';
@@ -13,7 +13,27 @@ const AdminDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    const config = userInfo ? { headers: { Authorization: `Bearer ${userInfo.token}` } } : {};
+    const config = useMemo(
+        () => (userInfo ? { headers: { Authorization: `Bearer ${userInfo.token}` } } : {}),
+        [userInfo]
+    );
+
+    const loadData = useCallback(async () => {
+        try {
+            setLoading(true);
+            const [booksRes, ordersRes] = await Promise.all([
+                api.get('/books?paginate=true&limit=300'),
+                api.get('/orders?paginate=true&limit=300', config),
+            ]);
+            setBooks(Array.isArray(booksRes.data) ? booksRes.data : (booksRes.data?.items || []));
+            setOrders(Array.isArray(ordersRes.data) ? ordersRes.data : (ordersRes.data?.items || []));
+            setError('');
+        } catch (err) {
+            setError(err.response?.data?.message || err.message);
+        } finally {
+            setLoading(false);
+        }
+    }, [config]);
 
     useEffect(() => {
         if (!userInfo || !userInfo.isAdmin) {
@@ -21,25 +41,8 @@ const AdminDashboard = () => {
             return;
         }
 
-        const loadData = async () => {
-            try {
-                setLoading(true);
-                const [booksRes, ordersRes] = await Promise.all([
-                    api.get('/books?paginate=true&limit=300'),
-                    api.get('/orders?paginate=true&limit=300', config),
-                ]);
-                setBooks(Array.isArray(booksRes.data) ? booksRes.data : (booksRes.data?.items || []));
-                setOrders(Array.isArray(ordersRes.data) ? ordersRes.data : (ordersRes.data?.items || []));
-                setError('');
-            } catch (err) {
-                setError(err.response?.data?.message || err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         loadData();
-    }, [userInfo, navigate]);
+    }, [loadData, navigate, userInfo]);
 
     const stats = useMemo(() => {
         const paidOrdersList = orders.filter((o) => o.isPaid && !o.isCancelled);

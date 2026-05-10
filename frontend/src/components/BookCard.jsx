@@ -4,6 +4,7 @@ import { ShoppingCart } from 'lucide-react';
 import useCartStore from '../store/useCartStore';
 import { handleBookImageError } from '../utils/imageFallback';
 import { formatINR } from '../utils/currency';
+import { trackAddToCart, trackViewItem } from '../utils/analytics';
 
 const BookCard = ({ book }) => {
     const addToCart = useCartStore((state) => state.addToCart);
@@ -11,17 +12,25 @@ const BookCard = ({ book }) => {
     const handleAddToCart = (e) => {
         e.preventDefault();
         addToCart({ ...book, qty: 1 });
+        // Track add to cart event
+        trackAddToCart(book._id, book.title, book.price);
+    };
+
+    const handleViewItem = () => {
+        // Track view item event
+        trackViewItem(book._id, book.title, book.price);
     };
 
     return (
         <div className="group bg-white dark:bg-dark-surface rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100 dark:border-dark-border">
-            <Link to={`/book/${book._id}`} className="relative overflow-hidden aspect-3/4 block">
+            <Link to={`/book/${book._id}`} className="relative overflow-hidden aspect-3/4 block" onClick={handleViewItem}>
                 <img
                     src={book.image}
                     alt={book.title}
                     onError={handleBookImageError}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
                 />
                 {book.countInStock === 0 && (
                     <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">

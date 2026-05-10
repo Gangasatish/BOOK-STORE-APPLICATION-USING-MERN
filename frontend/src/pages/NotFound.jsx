@@ -61,8 +61,8 @@ const NotFound = () => {
                         <Link to="/categories" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
                             → Browse Categories
                         </Link>
-                        <Link to="/about" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
-                            → About LuminaReads
+                        <Link to="/blog" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
+                            → Visit the Blog
                         </Link>
                         <Link to="/contact" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-semibold transition-colors">
                             → Contact Us

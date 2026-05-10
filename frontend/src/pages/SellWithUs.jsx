@@ -73,6 +73,26 @@ const SellWithUs = () => {
                 </p>
             </div>
 
+            <section className="grid gap-6 md:grid-cols-2 mb-10">
+                <div className="bg-primary-50 dark:bg-primary-950/20 rounded-3xl p-6 border border-primary-100 dark:border-primary-900">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why partner with LuminaReads?</h2>
+                    <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <li>Reach book lovers across multiple genres with an easy online storefront.</li>
+                        <li>Grow your audience with curated recommendations and featured promotions.</li>
+                        <li>Submit your title quickly with a simple collaboration request form.</li>
+                    </ul>
+                </div>
+                <div className="bg-white dark:bg-dark-surface rounded-3xl border border-gray-100 dark:border-dark-border p-6">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Need help before submitting?</h2>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                        Visit our support page for author guidelines, publishing FAQs, and book submission best practices.
+                    </p>
+                    <Link to="/support" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                        Visit Support
+                    </Link>
+                </div>
+            </section>
+
             <form onSubmit={onSubmit} className="bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-2xl p-6 md:p-8 space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input name="name" value={form.name} onChange={onChange} placeholder="Your Name *" required className="px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border bg-gray-50 dark:bg-dark-bg" />

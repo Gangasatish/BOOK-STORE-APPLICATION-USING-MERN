@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AnalyticsTracker from './components/AnalyticsTracker';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import BookDetails from './pages/BookDetails';
@@ -10,6 +11,7 @@ import AdminBooks from './pages/AdminBooks';
 import AboutContact from './pages/AboutContact';
 import AdminBookEdit from './pages/AdminBookEdit';
 import AdminOrders from './pages/AdminOrders';
+import Blog from './pages/Blog';
 import SupportPage from './pages/SupportPage';
 import Categories from './pages/Categories';
 import AdminRoute from './components/AdminRoute';
@@ -26,6 +28,7 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <Router>
+      <AnalyticsTracker />
       <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-gray-100">
         <Navbar />
         <main className="grow">
@@ -51,6 +54,7 @@ function App() {
             </Route>
             <Route path="/about" element={<AboutContact />} />
             <Route path="/contact" element={<AboutContact />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/faq" element={<SupportPage topic="faq" />} />
             <Route path="/shipping" element={<SupportPage topic="shipping" />} />

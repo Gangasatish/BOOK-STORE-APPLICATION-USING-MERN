@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import SkeletonCard from '../components/SkeletonCard';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SEO from '../components/SEO';
 import { Filter } from 'lucide-react';
 import api from '../lib/api';
+import { trackSearch } from '../utils/analytics';
 
 const Shop = () => {
     const [books, setBooks] = useState([]);
@@ -33,6 +34,11 @@ const Shop = () => {
                 setBooks(data);
                 setError(null);
                 setLoading(false);
+
+                // Track search if keyword is provided
+                if (keyword) {
+                    trackSearch(keyword);
+                }
             } catch (err) {
                 setError(err.message);
                 setLoading(false);
@@ -88,6 +94,21 @@ const Shop = () => {
                     books.map((book) => <BookCard key={book._id} book={book} />)
                 )}
             </div>
+
+            <section className="mt-14 bg-primary-50 dark:bg-dark-surface rounded-3xl p-8 border border-primary-100 dark:border-primary-900">
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">Looking for reading inspiration?</h2>
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    Explore trending genres, curated collections, and expert book guides to help you find the perfect title.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <Link to="/categories" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                        Browse Genres
+                    </Link>
+                    <Link to="/blog" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                        Read Book Tips
+                    </Link>
+                </div>
+            </section>
         </div>
     );
 };

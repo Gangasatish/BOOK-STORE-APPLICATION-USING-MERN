@@ -25,10 +25,10 @@ const Categories = () => {
                 keywords="book categories, fiction, romance, fantasy, mystery, bookstore"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Categories</h1>
-            <p className="text-gray-500 dark:text-gray-400 mb-8">Pick a category to view matching books.</p>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Book Categories</h1>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Select a genre to explore curated book collections and discover titles that match your next reading adventure.</p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
                 {categories.map((category) => (
                     <Link
                         key={category}
@@ -38,6 +38,23 @@ const Categories = () => {
                         {category}
                     </Link>
                 ))}
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+                <section className="bg-white dark:bg-dark-surface rounded-3xl border border-gray-100 dark:border-dark-border p-8">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">Why browse by genre?</h2>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Finding the right category helps you discover books faster and match your reading preferences. Whether you love fantasy, romance, mystery, or business, our categories organize top selling titles for easy browsing.
+                    </p>
+                </section>
+                <section className="bg-primary-50 dark:bg-primary-950/20 rounded-3xl border border-primary-100 dark:border-primary-900 p-8">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">Need reading inspiration?</h2>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        Visit our blog for book recommendations, genre guides, and reading tips.</p>
+                    <Link to="/blog" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                        Read Blog Articles
+                    </Link>
+                </section>
             </div>
         </div>
     );

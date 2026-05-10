@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../lib/api';
 import useAuthStore from '../store/useAuthStore';
@@ -10,11 +10,12 @@ const AdminCollabRequests = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    const config = userInfo
-        ? { headers: { Authorization: `Bearer ${userInfo.token}` } }
-        : {};
+    const config = useMemo(
+        () => (userInfo ? { headers: { Authorization: `Bearer ${userInfo.token}` } } : {}),
+        [userInfo]
+    );
 
-    const fetchRequests = async () => {
+    const fetchRequests = useCallback(async () => {
         try {
             setLoading(true);
             const { data } = await api.get('/collab?paginate=true&limit=200', config);
@@ -25,7 +26,7 @@ const AdminCollabRequests = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [config]);
 
     useEffect(() => {
         if (!userInfo || !userInfo.isAdmin) {
@@ -33,7 +34,7 @@ const AdminCollabRequests = () => {
             return;
         }
         fetchRequests();
-    }, [userInfo, navigate]);
+    }, [fetchRequests, navigate, userInfo]);
 
     const updateStatus = async (id, status) => {
         try {

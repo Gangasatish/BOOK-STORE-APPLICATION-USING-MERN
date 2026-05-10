@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Award, Users, BookOpen, Zap } from 'lucide-react';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SEO from '../components/SEO';
@@ -31,6 +32,26 @@ const AboutContact = () => {
         { icon: Users, title: 'Expert Support', desc: '24/7 customer support available' },
     ];
 
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'LuminaReads',
+        url: 'https://luminareads.com/about',
+        logo: 'https://luminareads.com/logo.png',
+        contactPoint: [{
+            '@type': 'ContactPoint',
+            telephone: '+91-9032729367',
+            contactType: 'customer support',
+            areaServed: 'IN',
+            availableLanguage: ['English'],
+        }],
+        sameAs: [
+            'https://www.facebook.com/luminareads',
+            'https://twitter.com/luminareads',
+            'https://www.instagram.com/luminareads'
+        ],
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
@@ -38,6 +59,7 @@ const AboutContact = () => {
                 description="Learn about LuminaReads, a curated bookstore for readers seeking bestselling and niche titles. Contact us for orders, support, and publishing inquiries."
                 url="https://luminareads.com/about"
                 keywords="online bookstore, book delivery, bookshop contact, reading community, customer support"
+                schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'About' }]} />
             {/* Hero Section */}
@@ -97,6 +119,8 @@ const AboutContact = () => {
                         <img
                             src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=800&auto=format&fit=crop"
                             alt="Bookstore Library with rows of books"
+                            loading="lazy"
+                            decoding="async"
                             className="rounded-2xl shadow-xl w-full h-64 object-cover"
                         />
                     </div>
@@ -244,6 +268,24 @@ const AboutContact = () => {
                                 <p className="text-gray-600 dark:text-gray-400">{feature.desc}</p>
                             </div>
                         ))}
+                    </div>
+                </section>
+
+                <section className="mt-16 bg-primary-50 dark:bg-primary-950/20 rounded-3xl p-8 border border-primary-100 dark:border-primary-900">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to explore books or get support?</h2>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Browse our full collection, discover curated categories, or contact our support team for order and publishing questions.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <Link to="/shop" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                            Browse Books
+                        </Link>
+                        <Link to="/support" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                            Visit Support
+                        </Link>
+                        <Link to="/categories" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                            Browse Categories
+                        </Link>
                     </div>
                 </section>
             </div>

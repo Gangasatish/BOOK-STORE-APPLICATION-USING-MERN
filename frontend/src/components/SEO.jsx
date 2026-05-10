@@ -20,7 +20,27 @@ const addOrUpdateLink = (rel, href) => {
     element.setAttribute('href', href);
 };
 
-const SEO = ({ title, description, url, image, keywords, type = 'website', noindex = false }) => {
+const addOrUpdateSchema = (schema) => {
+    const id = 'structured-data-jsonld';
+    let element = document.head.querySelector(`script[id="${id}"]`);
+
+    if (!schema) {
+        if (element) {
+            element.remove();
+        }
+        return;
+    }
+
+    if (!element) {
+        element = document.createElement('script');
+        element.setAttribute('type', 'application/ld+json');
+        element.setAttribute('id', id);
+        document.head.appendChild(element);
+    }
+    element.textContent = JSON.stringify(schema);
+};
+
+const SEO = ({ title, description, url, image, keywords, type = 'website', noindex = false, schema }) => {
     useEffect(() => {
         if (title) {
             document.title = title;
@@ -57,7 +77,9 @@ const SEO = ({ title, description, url, image, keywords, type = 'website', noind
             addOrUpdateMeta('name', 'twitter:image', image);
             addOrUpdateMeta('name', 'twitter:card', 'summary_large_image');
         }
-    }, [title, description, url, image, keywords, type, noindex]);
+
+        addOrUpdateSchema(schema);
+    }, [title, description, url, image, keywords, type, noindex, schema]);
 
     return null;
 };

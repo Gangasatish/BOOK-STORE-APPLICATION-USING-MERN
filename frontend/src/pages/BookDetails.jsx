@@ -20,6 +20,24 @@ const BookDetails = () => {
 
     const addToCart = useCartStore((state) => state.addToCart);
 
+    const schema = book ? {
+        '@context': 'https://schema.org',
+        '@type': 'Book',
+        name: book.title,
+        author: book.author,
+        image: book.image,
+        description: book.description,
+        genre: book.category,
+        isbn: book.isbn || undefined,
+        offers: {
+            '@type': 'Offer',
+            url: `https://luminareads.com/book/${book._id}`,
+            availability: book.countInStock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            price: book.price,
+            priceCurrency: 'INR',
+        },
+    } : null;
+
     useEffect(() => {
         const fetchBook = async () => {
             try {
@@ -50,6 +68,7 @@ const BookDetails = () => {
                 url={`https://luminareads.com/book/${book._id}`}
                 image={book.image}
                 keywords={`${book.category}, buy ${book.title}, ${book.author}, online bookstore`}
+                schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop', path: '/shop' }, { label: book.title }]} />
             <Link to="/shop" className="inline-flex items-center gap-2 text-gray-500 hover:text-primary-600 transition-colors mb-8 group">
@@ -65,6 +84,8 @@ const BookDetails = () => {
                         <img
                             src={book.image}
                             alt={book.title}
+                            loading="lazy"
+                            decoding="async"
                             onError={handleBookImageError}
                             className="rounded-xl shadow-2xl max-h-125 object-contain hover:scale-105 transition-transform duration-500"
                         />
@@ -142,6 +163,27 @@ const BookDetails = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <section className="mt-10 rounded-3xl bg-primary-50 dark:bg-primary-950/20 p-6 border border-primary-100 dark:border-primary-900">
+                            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">More books to explore</h2>
+                            <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                                Looking for similar titles? Browse more books in {book.category} or get reading recommendations from the LuminaReads blog.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <Link
+                                    to={`/shop?category=${encodeURIComponent(book.category)}`}
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all"
+                                >
+                                    Explore {book.category}
+                                </Link>
+                                <Link
+                                    to="/blog"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all"
+                                >
+                                    Read Book Guides
+                                </Link>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>

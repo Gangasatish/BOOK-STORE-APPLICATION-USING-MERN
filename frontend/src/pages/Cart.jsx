@@ -8,6 +8,7 @@ import { safeReadJSON } from '../utils/storage';
 import { handleBookImageError } from '../utils/imageFallback';
 import { formatINR } from '../utils/currency';
 import SEO from '../components/SEO';
+import { trackPurchase } from '../utils/analytics';
 
 const Cart = () => {
     const navigate = useNavigate();
@@ -82,6 +83,10 @@ const Cart = () => {
             if (!orderId) {
                 throw new Error('Order was placed but order id is missing in response');
             }
+
+            // Track purchase event
+            trackPurchase(orderId, total);
+
             navigate(`/order-success/${orderId}`);
         } catch (error) {
             console.error(error);
@@ -98,9 +103,14 @@ const Cart = () => {
                     <ShoppingBag className="h-20 w-20 text-gray-300 dark:text-gray-600 mx-auto mb-6" />
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Your cart is empty</h2>
                     <p className="text-gray-500 dark:text-gray-400 mb-8">Looks like you haven't added any books to your cart yet.</p>
-                    <Link to="/shop" className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium inline-flex items-center gap-2 transition-colors">
-                        Start Shopping <ArrowRight className="h-5 w-5" />
-                    </Link>
+                    <div className="space-y-4">
+                        <Link to="/shop" className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium inline-flex items-center gap-2 transition-colors">
+                            Start Shopping <ArrowRight className="h-5 w-5" />
+                        </Link>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                            Or browse <Link to="/categories" className="text-primary-600 hover:underline">book categories</Link> and reading tips on the <Link to="/blog" className="text-primary-600 hover:underline">LuminaReads Blog</Link>.
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -123,7 +133,7 @@ const Cart = () => {
                             {cartItems.map((item) => (
                                 <li key={item._id} className="p-6 flex flex-col sm:flex-row items-center gap-6">
                                     <div className="w-24 h-32 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-                                        <img src={item.image} alt={item.title} onError={handleBookImageError} className="w-full h-full object-cover" />
+                                        <img src={item.image} alt={item.title} onError={handleBookImageError} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                                     </div>
 
                                     <div className="flex-1 text-center sm:text-left">
@@ -261,6 +271,20 @@ const Cart = () => {
                         >
                             {loading ? 'Processing...' : userInfo ? 'Proceed to Checkout' : 'Login to Checkout'}
                         </button>
+
+                        <div className="mt-8 rounded-3xl bg-primary-50 dark:bg-primary-950/20 p-5 border border-primary-100 dark:border-primary-900 text-sm text-gray-600 dark:text-gray-300">
+                            <p className="mb-4 leading-relaxed">
+                                Need help choosing your next book? Browse our categories or read the LuminaReads blog for gift ideas and reading recommendations.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <Link to="/categories" className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                                    Browse Categories
+                                </Link>
+                                <Link to="/blog" className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                                    Read Blog Tips
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

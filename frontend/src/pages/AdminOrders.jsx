@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Package, IndianRupee, Truck, Ban } from 'lucide-react';
 import api from '../lib/api';
@@ -26,11 +26,12 @@ const AdminOrders = () => {
     const [sortBy, setSortBy] = useState('newest');
     const [selectedOrder, setSelectedOrder] = useState(null);
 
-    const authConfig = userInfo
-        ? { headers: { Authorization: `Bearer ${userInfo.token}` } }
-        : {};
+    const authConfig = useMemo(
+        () => (userInfo ? { headers: { Authorization: `Bearer ${userInfo.token}` } } : {}),
+        [userInfo]
+    );
 
-    const fetchOrders = async () => {
+    const fetchOrders = useCallback(async () => {
         try {
             setLoading(true);
             const { data } = await api.get('/orders?paginate=true&limit=200', authConfig);
@@ -41,7 +42,7 @@ const AdminOrders = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [authConfig]);
 
     useEffect(() => {
         if (!userInfo || !userInfo.isAdmin) {
@@ -49,7 +50,7 @@ const AdminOrders = () => {
             return;
         }
         fetchOrders();
-    }, [userInfo, navigate]);
+    }, [fetchOrders, navigate, userInfo]);
 
     const markPaid = async (orderId) => {
         try {

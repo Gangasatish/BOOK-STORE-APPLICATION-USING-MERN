@@ -55,6 +55,21 @@ const OrderSuccess = () => {
                         <ArrowRight className="h-5 w-5" />
                     </Link>
                 </div>
+
+                <section className="mt-10 text-left bg-primary-50 dark:bg-primary-950/20 rounded-3xl p-6 border border-primary-100 dark:border-primary-900">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">What happens next?</h2>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        We will process your order and notify you when it ships. Return to shopping for more books or explore recommended categories to keep reading.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <Link to="/categories" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                            Browse Categories
+                        </Link>
+                        <Link to="/blog" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                            Reading Ideas
+                        </Link>
+                    </div>
+                </section>
             </Motion.div>
         </div>
     );

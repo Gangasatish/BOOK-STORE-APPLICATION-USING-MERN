@@ -100,13 +100,13 @@ const OrderDetails = () => {
 
                     <div className="bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-xl p-6">
                         <h2 className="text-xl font-semibold mb-3">Shipping Address</h2>
-                        <p className="text-gray-700 dark:text-gray-300">
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                             {order.shippingAddress?.address}, {order.shippingAddress?.city}, {order.shippingAddress?.postalCode}, {order.shippingAddress?.country}
                         </p>
                     </div>
 
                     <div className="bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-xl p-6">
-                        <h2 className="text-xl font-semibold mb-3">Items</h2>
+                        <h2 className="text-xl font-semibold mb-3">Order Summary</h2>
                         <div className="space-y-3">
                             {(order.orderItems || []).map((item, index) => (
                                 <div key={`${item.book}-${index}`} className="flex items-center justify-between border border-gray-100 dark:border-dark-border rounded-lg p-3">
@@ -122,6 +122,19 @@ const OrderDetails = () => {
                             ))}
                         </div>
                     </div>
+
+                    <section className="bg-primary-50 dark:bg-primary-950/20 rounded-3xl p-6 border border-primary-100 dark:border-primary-900">
+                        <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">Continue shopping</h2>
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Explore more books in popular categories or read our blog for gift ideas and bestseller picks.</p>
+                        <div className="flex flex-col sm:flex-row gap-3">
+                            <Link to="/categories" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
+                                Browse Categories
+                            </Link>
+                            <Link to="/blog" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                                Reading Ideas
+                            </Link>
+                        </div>
+                    </section>
                 </div>
             )}
         </div>
