@@ -21,6 +21,7 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 import AdminDashboard from './pages/AdminDashboard';
 import SellWithUs from './pages/SellWithUs';
 import AdminCollabRequests from './pages/AdminCollabRequests';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
             <Route path="/shipping" element={<SupportPage topic="shipping" />} />
             <Route path="/returns" element={<SupportPage topic="returns" />} />
             <Route path="/sell-with-us" element={<SellWithUs />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <WhatsAppFloat />

@@ -48,8 +48,8 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
-                        <Link to="/" className="flex items-center gap-2">
-                            <BookOpen className="h-8 w-8 text-primary-600" />
+                        <Link to="/" className="flex items-center gap-2" aria-label="LuminaReads - Home">
+                            <BookOpen className="h-8 w-8 text-primary-600" aria-hidden="true" />
                             <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white">Lumina<span className="text-primary-600">Reads</span></span>
                         </Link>
                     </div>
@@ -62,8 +62,9 @@ const Navbar = () => {
                                 className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-primary-500 bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-gray-100 placeholder-gray-500 transition-all duration-300"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
+                                aria-label="Search for books"
                             />
-                            <Search className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" />
+                            <Search className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" aria-hidden="true" />
                         </form>
                     </div>
 
@@ -78,10 +79,10 @@ const Navbar = () => {
                         </Link>
 
                         {!userInfo?.isAdmin && (
-                            <Link to="/cart" className="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-500 relative transition-colors">
-                                <ShoppingCart className="h-6 w-6" />
+                            <Link to="/cart" className="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-500 relative transition-colors" aria-label="Shopping cart">
+                                <ShoppingCart className="h-6 w-6" aria-hidden="true" />
                                 {cartItemCount > 0 && (
-                                    <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                                    <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full" aria-label={`${cartItemCount} items in cart`}>
                                         {cartItemCount}
                                     </span>
                                 )}
@@ -133,16 +134,21 @@ const Navbar = () => {
 
                     <div className="flex items-center md:hidden gap-4">
                         {!userInfo?.isAdmin && (
-                            <Link to="/cart" className="relative mr-2">
-                                <ShoppingCart className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                            <Link to="/cart" className="relative mr-2" aria-label="Shopping cart">
+                                <ShoppingCart className="h-6 w-6 text-gray-600 dark:text-gray-300" aria-hidden="true" />
                                 {cartItemCount > 0 && (
-                                    <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                                    <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full" aria-label={`${cartItemCount} items in cart`}>
                                         {cartItemCount}
                                     </span>
                                 )}
                             </Link>
                         )}
-                        <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 dark:text-gray-300">
+                        <button 
+                            onClick={() => setIsOpen(!isOpen)} 
+                            className="text-gray-600 dark:text-gray-300"
+                            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                            aria-expanded={isOpen}
+                        >
                             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                         </button>
                     </div>

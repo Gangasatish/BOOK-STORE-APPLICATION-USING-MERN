@@ -19,14 +19,32 @@ const Footer = () => {
                             Your premier destination for captivating stories and deep knowledge. Discover a world of literature curated just for you.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            <a href="#" className="h-10 w-10 bg-gray-50 dark:bg-dark-bg rounded-full flex items-center justify-center text-gray-500 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">
-                                <Facebook className="h-5 w-5" />
+                            <a 
+                                href="https://www.facebook.com/luminareads" 
+                                target="_blank"
+                                rel="noreferrer"
+                                className="h-10 w-10 bg-gray-50 dark:bg-dark-bg rounded-full flex items-center justify-center text-gray-500 hover:text-white hover:bg-blue-600 transition-all" 
+                                aria-label="Visit us on Facebook"
+                            >
+                                <Facebook className="h-5 w-5" aria-hidden="true" />
                             </a>
-                            <a href="#" className="h-10 w-10 bg-gray-50 dark:bg-dark-bg rounded-full flex items-center justify-center text-gray-500 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">
-                                <Twitter className="h-5 w-5" />
+                            <a 
+                                href="https://twitter.com/luminareads" 
+                                target="_blank"
+                                rel="noreferrer"
+                                className="h-10 w-10 bg-gray-50 dark:bg-dark-bg rounded-full flex items-center justify-center text-gray-500 hover:text-white hover:bg-blue-400 transition-all" 
+                                aria-label="Visit us on Twitter"
+                            >
+                                <Twitter className="h-5 w-5" aria-hidden="true" />
                             </a>
-                            <a href="#" className="h-10 w-10 bg-gray-50 dark:bg-dark-bg rounded-full flex items-center justify-center text-gray-500 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">
-                                <Instagram className="h-5 w-5" />
+                            <a 
+                                href="https://www.instagram.com/luminareads" 
+                                target="_blank"
+                                rel="noreferrer"
+                                className="h-10 w-10 bg-gray-50 dark:bg-dark-bg rounded-full flex items-center justify-center text-gray-500 hover:text-white hover:bg-pink-600 transition-all" 
+                                aria-label="Visit us on Instagram"
+                            >
+                                <Instagram className="h-5 w-5" aria-hidden="true" />
                             </a>
                         </div>
                     </div>
