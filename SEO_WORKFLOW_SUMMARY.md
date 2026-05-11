@@ -890,3 +890,174 @@ Added Google Search Console ownership verification meta tag to the project's HTM
 - Use this file as the master SEO content log for all future assignments.
 - After GSC verification, submit sitemap and monitor index coverage.
 - Review GA4 Realtime reports within 24 hours of deployment to confirm data collection.
+- If a custom domain (e.g. luminareads.com) is connected, update only `frontend/src/utils/siteConfig.js` and re-run the domain replacement across all files.
+
+## Step 8: TECHNICAL SEO AUDIT — SITEMAP, INDEXING, DOMAIN & GSC TROUBLESHOOTING
+
+### Executive Summary
+Performed a full technical SEO audit and discovered a **critical domain mismatch** that was preventing Google Search Console from reading the sitemap. All URLs across the entire project (sitemap.xml, robots.txt, canonical links, OG tags, and 14 page-level SEO components) referenced `https://luminareads.com/` — a domain that does not exist. The actual production domain is `https://book-store-application-using-mern-seven.vercel.app/`. Fixed all references, hardened the Vercel deployment config, and verified the live deployment.
+
+### Root Cause Analysis
+
+#### 🔴 CRITICAL: Domain Mismatch (Primary Issue)
+- **Problem**: Every URL in the project used `https://luminareads.com/` but the actual live site is `https://book-store-application-using-mern-seven.vercel.app/`
+- **Impact**: Google Search Console **rejects sitemaps** where URLs don't match the verified property domain. This means:
+  - Sitemap submission would fail or return "URL not on this property"
+  - Canonical URLs would point to a non-existent domain
+  - OG tags would reference wrong URLs for social sharing
+  - Search Console would not recognize any pages
+- **Root Cause**: URLs were hardcoded for a planned custom domain (`luminareads.com`) that was never connected to Vercel
+
+#### 🟡 Vercel SPA Rewrite Risk
+- **Problem**: `vercel.json` had a catch-all rewrite `/(.*) → /index.html` that could potentially intercept `sitemap.xml` and `robots.txt` requests
+- **Impact**: Could serve React SPA HTML instead of actual XML/text files
+- **Fix**: Added explicit identity rewrites for static SEO files before the catch-all
+
+### Issues Detected & Fixes Applied
+
+| # | Issue | Severity | Files Affected | Fix Applied |
+|---|-------|----------|----------------|-------------|
+| 1 | Sitemap URLs use wrong domain | 🔴 Critical | `frontend/public/sitemap.xml` | All 10 `<loc>` URLs updated to Vercel domain |
+| 2 | Robots.txt Sitemap directive uses wrong domain | 🔴 Critical | `frontend/public/robots.txt` | Sitemap URL updated to Vercel domain |
+| 3 | Canonical URL in index.html uses wrong domain | 🔴 Critical | `frontend/index.html` | Updated to Vercel domain |
+| 4 | OG URL in index.html uses wrong domain | 🟡 High | `frontend/index.html` | Updated to Vercel domain |
+| 5 | SEO component URLs across 14 pages use wrong domain | 🔴 Critical | 14 JSX files | Bulk replaced across all files |
+| 6 | JSON-LD schema URLs use wrong domain | 🟡 High | Home, Blog, AboutContact, BookDetails | Updated via bulk replace |
+| 7 | vercel.json catch-all may intercept static files | 🟡 Medium | `frontend/vercel.json` | Added explicit rewrites for sitemap.xml and robots.txt |
+| 8 | Non-standard `Request-rate` directive in robots.txt | 🟢 Low | `frontend/public/robots.txt` | Removed (not recognized by Google) |
+| 9 | No centralized site URL configuration | 🟢 Low | N/A | Created `frontend/src/utils/siteConfig.js` |
+
+### Files Modified
+
+| File | Change |
+|------|--------|
+| `frontend/public/sitemap.xml` | All 10 URLs: `luminareads.com` → `book-store-application-using-mern-seven.vercel.app` |
+| `frontend/public/robots.txt` | Sitemap directive domain fix; removed non-standard `Request-rate` |
+| `frontend/vercel.json` | Added explicit identity rewrites for `/sitemap.xml` and `/robots.txt` |
+| `frontend/index.html` | Canonical URL and OG URL domain fix |
+| `frontend/src/pages/Home.jsx` | SEO URL + schema URLs |
+| `frontend/src/pages/AboutContact.jsx` | SEO URL + schema URLs |
+| `frontend/src/pages/Blog.jsx` | SEO URL + schema URLs |
+| `frontend/src/pages/BookDetails.jsx` | SEO URL + schema URLs |
+| `frontend/src/pages/Shop.jsx` | SEO URL |
+| `frontend/src/pages/Cart.jsx` | SEO URL |
+| `frontend/src/pages/Categories.jsx` | SEO URL |
+| `frontend/src/pages/Account.jsx` | SEO URL |
+| `frontend/src/pages/Login.jsx` | SEO URL |
+| `frontend/src/pages/SupportPage.jsx` | SEO URL |
+| `frontend/src/pages/SellWithUs.jsx` | SEO URL |
+| `frontend/src/pages/NotFound.jsx` | SEO URL |
+| `frontend/src/pages/OrderDetails.jsx` | SEO URL |
+| `frontend/src/pages/OrderSuccess.jsx` | SEO URL |
+| `frontend/src/utils/siteConfig.js` | **NEW** — centralized site URL constant |
+
+### Domain Consistency Report
+
+| Component | Before (Broken) | After (Fixed) | Status |
+|-----------|-----------------|---------------|--------|
+| Sitemap URLs | `https://luminareads.com/*` | `https://book-store-application-using-mern-seven.vercel.app/*` | ✅ |
+| Robots.txt Sitemap | `https://luminareads.com/sitemap.xml` | `https://book-store-application-using-mern-seven.vercel.app/sitemap.xml` | ✅ |
+| Canonical URL | `https://luminareads.com` | `https://book-store-application-using-mern-seven.vercel.app` | ✅ |
+| OG URL | `https://luminareads.com` | `https://book-store-application-using-mern-seven.vercel.app` | ✅ |
+| Page SEO URLs (14 pages) | `https://luminareads.com/*` | `https://book-store-application-using-mern-seven.vercel.app/*` | ✅ |
+| JSON-LD Schema URLs | `https://luminareads.com/*` | `https://book-store-application-using-mern-seven.vercel.app/*` | ✅ |
+| Search Console Property | N/A | `https://book-store-application-using-mern-seven.vercel.app` | ✅ Ready |
+
+### Sitemap Validation Report
+
+| Check | Result |
+|-------|--------|
+| XML Syntax | ✅ Valid XML 1.0 |
+| URL Formatting | ✅ All absolute HTTPS URLs |
+| Domain Consistency | ✅ All URLs match production domain |
+| Accessibility (HTTP 200) | ✅ Publicly accessible |
+| Content-Type | ✅ Served as XML |
+| Canonical Consistency | ✅ Sitemap URLs match page canonicals |
+| `lastmod` Dates | ✅ Updated to 2026-05-11 |
+| Priority Values | ✅ Valid range (0.6–1.0) |
+| Total URLs | 10 pages indexed |
+
+#### Indexed Pages
+1. `/` (Homepage) — Priority 1.0
+2. `/shop` — Priority 0.9
+3. `/categories` — Priority 0.8
+4. `/about` — Priority 0.7
+5. `/blog` — Priority 0.7
+6. `/contact` — Priority 0.6
+7. `/faq` — Priority 0.6
+8. `/shipping` — Priority 0.6
+9. `/returns` — Priority 0.6
+10. `/sell-with-us` — Priority 0.6
+
+### Robots.txt Validation Report
+
+| Check | Result |
+|-------|--------|
+| Syntax | ✅ Valid |
+| Sitemap Directive | ✅ Points to correct domain |
+| Public Pages Crawlable | ✅ All public pages allowed |
+| Private Pages Blocked | ✅ `/admin`, `/account` disallowed |
+| Sensitive Files Blocked | ✅ `.env`, `.git`, `node_modules` disallowed |
+| Googlebot Access | ✅ Explicit allow with no crawl delay |
+| No Accidental Blocking | ✅ Verified |
+
+### Vercel Deployment Config
+
+```json
+{
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+- Static SEO files are explicitly protected from the SPA catch-all rewrite
+- React SPA routing still works for all other paths
+
+### Deployment Actions
+
+- ✅ **Build passed** — `npm run build` succeeded with 0 errors
+- ✅ **Committed** — Git commit `f5c0c64` on `main` branch
+- ✅ **Pushed to GitHub** — Vercel auto-deployment triggered
+- ✅ **Live verification** — Browser confirmed updated sitemap and robots.txt are live
+
+### Final Production URLs
+
+| Resource | URL |
+|----------|-----|
+| Homepage | https://book-store-application-using-mern-seven.vercel.app/ |
+| Sitemap | https://book-store-application-using-mern-seven.vercel.app/sitemap.xml |
+| Robots.txt | https://book-store-application-using-mern-seven.vercel.app/robots.txt |
+| Shop | https://book-store-application-using-mern-seven.vercel.app/shop |
+| Blog | https://book-store-application-using-mern-seven.vercel.app/blog |
+| About | https://book-store-application-using-mern-seven.vercel.app/about |
+| Categories | https://book-store-application-using-mern-seven.vercel.app/categories |
+| FAQ | https://book-store-application-using-mern-seven.vercel.app/faq |
+
+### Final Verification Status
+
+| Component | Status |
+|-----------|--------|
+| Sitemap XML syntax | ✅ Valid |
+| Sitemap domain consistency | ✅ Matches production |
+| Sitemap accessibility | ✅ HTTP 200 |
+| Robots.txt syntax | ✅ Valid |
+| Robots.txt sitemap directive | ✅ Correct domain |
+| Canonical URLs | ✅ Consistent |
+| OG/Twitter URLs | ✅ Consistent |
+| JSON-LD schema URLs | ✅ Consistent |
+| Build verification | ✅ No errors |
+| Vercel deployment | ✅ Live and verified |
+| GSC readiness | ✅ Ready for verification |
+
+### Remaining Manual Actions
+
+1. **Google Search Console** — Add property `https://book-store-application-using-mern-seven.vercel.app/` and verify using the HTML meta tag already in place
+2. **Submit Sitemap** — In GSC, go to Sitemaps → enter `sitemap.xml` → Submit
+3. **Request Indexing** — Use GSC URL Inspection tool to request indexing for key pages
+4. **Monitor** — Check GSC Index Coverage report after 48-72 hours
+
+---
+
+**Step 8 Completion**: ✅ All technical SEO issues diagnosed and fixed. Domain mismatch resolved. Sitemap, robots.txt, and all page-level SEO URLs are now consistent with the production domain. Google Search Console is ready to accept the sitemap.
