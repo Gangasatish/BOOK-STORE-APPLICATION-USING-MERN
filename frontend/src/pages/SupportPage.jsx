@@ -31,7 +31,7 @@ const topicContent = {
 
 const SupportPage = ({ topic = 'faq' }) => {
     const content = topicContent[topic] || topicContent.faq;
-    const url = `https://luminareads.com/${topic}`;
+    const url = `https://book-store-application-using-mern-seven.vercel.app/${topic}`;
     const schema = topic === 'faq'
         ? {
             '@context': 'https://schema.org',

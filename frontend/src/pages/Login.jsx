@@ -65,7 +65,7 @@ const Login = ({ adminMode = false }) => {
             <SEO
                 title={adminMode ? 'Admin Login | LuminaReads' : isRegister ? 'Register | LuminaReads' : 'Login | LuminaReads'}
                 description={adminMode ? 'Admin login for LuminaReads staff access.' : 'Login or register to manage your LuminaReads account and track orders.'}
-                url={adminMode ? 'https://luminareads.com/admin/login' : `https://luminareads.com/login`}
+                url={adminMode ? 'https://book-store-application-using-mern-seven.vercel.app/admin/login' : `https://book-store-application-using-mern-seven.vercel.app/login`}
                 noindex
             />
             <div className="max-w-md w-full space-y-8 bg-white dark:bg-dark-surface p-10 rounded-3xl shadow-xl border border-gray-100 dark:border-dark-border">

@@ -63,7 +63,7 @@ const OrderDetails = () => {
             <SEO
                 title={`Order ${id} | LuminaReads`}
                 description="View your order details and shipment status securely in your LuminaReads account."
-                url={`https://luminareads.com/orders/${id}`}
+                url={`https://book-store-application-using-mern-seven.vercel.app/orders/${id}`}
                 noindex
             />
             <div className="flex justify-between items-center mb-6">

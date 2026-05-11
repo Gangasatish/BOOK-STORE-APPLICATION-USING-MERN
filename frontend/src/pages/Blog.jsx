@@ -25,13 +25,13 @@ const Blog = () => {
         '@context': 'https://schema.org',
         '@type': 'Blog',
         name: 'LuminaReads Blog',
-        url: 'https://luminareads.com/blog',
+        url: 'https://book-store-application-using-mern-seven.vercel.app/blog',
         description: 'Read articles on book recommendations, reading habits, genres, and book buying tips from LuminaReads.',
         blogPost: posts.map((post) => ({
             '@type': 'BlogPosting',
             headline: post.title,
             description: post.excerpt,
-            url: `https://luminareads.com/blog#${post.slug}`,
+            url: `https://book-store-application-using-mern-seven.vercel.app/blog#${post.slug}`,
         })),
     };
 
@@ -40,7 +40,7 @@ const Blog = () => {
             <SEO
                 title="Blog | LuminaReads"
                 description="Read expert book recommendations, genre guides, and reading tips from LuminaReads."
-                url="https://luminareads.com/blog"
+                url="https://book-store-application-using-mern-seven.vercel.app/blog"
                 keywords="book blog, reading tips, book recommendations, genre guides"
                 schema={schema}
             />

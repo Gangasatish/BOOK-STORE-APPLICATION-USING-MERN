@@ -121,7 +121,7 @@ const Cart = () => {
             <SEO
                 title="Shopping Cart | LuminaReads"
                 description="Review your selected books, update quantities, and proceed to checkout securely with LuminaReads."
-                url="https://luminareads.com/cart"
+                url="https://book-store-application-using-mern-seven.vercel.app/cart"
                 noindex
             />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Shopping Cart</h1>

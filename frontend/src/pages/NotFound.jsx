@@ -8,7 +8,7 @@ const NotFound = () => {
             <SEO
                 title="404 Page Not Found | LuminaReads"
                 description="The page you are looking for is not available. Return to LuminaReads home to continue browsing great books."
-                url="https://luminareads.com/404"
+                url="https://book-store-application-using-mern-seven.vercel.app/404"
                 noindex
             />
             <div className="max-w-2xl text-center">

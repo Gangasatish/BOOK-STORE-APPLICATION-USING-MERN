@@ -18,11 +18,11 @@ const Home = () => {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         'name': 'LuminaReads',
-        'url': 'https://luminareads.com/',
+        'url': 'https://book-store-application-using-mern-seven.vercel.app/',
         'description': 'Explore thousands of books across every genre and shop online at LuminaReads.',
         'potentialAction': {
             '@type': 'SearchAction',
-            'target': 'https://luminareads.com/shop?keyword={search_term}',
+            'target': 'https://book-store-application-using-mern-seven.vercel.app/shop?keyword={search_term}',
             'query-input': 'required name=search_term'
         }
     };
@@ -53,7 +53,7 @@ const Home = () => {
             <SEO
                 title="LuminaReads | Discover Your Next Great Read"
                 description="Explore thousands of books across every genre and purchase your next favorite title from LuminaReads. Fast shipping and secure checkout."
-                url="https://luminareads.com/"
+                url="https://book-store-application-using-mern-seven.vercel.app/"
                 image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
                 keywords="online bookstore, buy books online, best books, fiction books, non-fiction books"
                 schema={schema}

@@ -11,7 +11,7 @@ const OrderSuccess = () => {
             <SEO
                 title="Order Confirmation | LuminaReads"
                 description="Your order is confirmed and being processed. Thank you for choosing LuminaReads for your book purchase."
-                url={`https://luminareads.com/order-success/${id}`}
+                url={`https://book-store-application-using-mern-seven.vercel.app/order-success/${id}`}
                 noindex
             />
             <Motion.div

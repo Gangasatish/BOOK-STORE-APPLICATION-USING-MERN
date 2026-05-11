@@ -36,8 +36,8 @@ const AboutContact = () => {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'LuminaReads',
-        url: 'https://luminareads.com/about',
-        logo: 'https://luminareads.com/logo.png',
+        url: 'https://book-store-application-using-mern-seven.vercel.app/about',
+        logo: 'https://book-store-application-using-mern-seven.vercel.app/logo.png',
         contactPoint: [{
             '@type': 'ContactPoint',
             telephone: '+91-9032729367',
@@ -57,7 +57,7 @@ const AboutContact = () => {
             <SEO
                 title="About LuminaReads | Your Online Bookstore"
                 description="Learn about LuminaReads, a curated bookstore for readers seeking bestselling and niche titles. Contact us for orders, support, and publishing inquiries."
-                url="https://luminareads.com/about"
+                url="https://book-store-application-using-mern-seven.vercel.app/about"
                 keywords="online bookstore, book delivery, bookshop contact, reading community, customer support"
                 schema={schema}
             />

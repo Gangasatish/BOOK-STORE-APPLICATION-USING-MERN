@@ -52,7 +52,7 @@ const Shop = () => {
             <SEO
                 title={keyword ? `Search results for ${keyword} - LuminaReads` : 'Shop Books Online | LuminaReads'}
                 description={keyword ? `Search results for ${keyword} on LuminaReads. Browse our book collection across genres with fast delivery.` : 'Browse our full book collection across genres and find the perfect book for your next read on LuminaReads.'}
-                url={keyword ? `https://luminareads.com/shop?keyword=${encodeURIComponent(keyword)}` : 'https://luminareads.com/shop'}
+                url={keyword ? `https://book-store-application-using-mern-seven.vercel.app/shop?keyword=${encodeURIComponent(keyword)}` : 'https://book-store-application-using-mern-seven.vercel.app/shop'}
                 keywords="buy books online, book categories, book shop, reading books"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop' }]} />

@@ -133,7 +133,7 @@ const Account = () => {
             <SEO
                 title="My Account | LuminaReads"
                 description="Manage your LuminaReads account, view recent orders, and update your profile details in one convenient dashboard."
-                url="https://luminareads.com/account"
+                url="https://book-store-application-using-mern-seven.vercel.app/account"
                 noindex
             />
             <div className="rounded-3xl bg-gradient-to-r from-slate-900 to-blue-900 text-white p-8 mb-8 shadow-xl">

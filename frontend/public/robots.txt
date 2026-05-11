@@ -15,7 +15,6 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /.env
 Disallow: /node_modules
-Disallow: /_next
 Disallow: /.git
 
 # Specific directives for Google
@@ -33,7 +32,4 @@ User-agent: facebookexternalhit
 Allow: /
 
 # Sitemap location
-Sitemap: https://luminareads.com/sitemap.xml
-
-# Cache timeout
-Request-rate: 30/60 (requests per 60 seconds)
+Sitemap: https://book-store-application-using-mern-seven.vercel.app/sitemap.xml

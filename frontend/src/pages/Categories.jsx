@@ -21,7 +21,7 @@ const Categories = () => {
             <SEO
                 title="Browse Book Categories | LuminaReads"
                 description="Explore book categories and browse titles by genre on LuminaReads. Find fiction, fantasy, romance, mystery, and more."
-                url="https://luminareads.com/categories"
+                url="https://book-store-application-using-mern-seven.vercel.app/categories"
                 keywords="book categories, fiction, romance, fantasy, mystery, bookstore"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />

@@ -31,7 +31,7 @@ const BookDetails = () => {
         isbn: book.isbn || undefined,
         offers: {
             '@type': 'Offer',
-            url: `https://luminareads.com/book/${book._id}`,
+            url: `https://book-store-application-using-mern-seven.vercel.app/book/${book._id}`,
             availability: book.countInStock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
             price: book.price,
             priceCurrency: 'INR',
@@ -65,7 +65,7 @@ const BookDetails = () => {
             <SEO
                 title={`${book.title} | LuminaReads`}
                 description={book.description?.slice(0, 155) || 'Explore this book on LuminaReads. Read reviews, check stock, and order today.'}
-                url={`https://luminareads.com/book/${book._id}`}
+                url={`https://book-store-application-using-mern-seven.vercel.app/book/${book._id}`}
                 image={book.image}
                 keywords={`${book.category}, buy ${book.title}, ${book.author}, online bookstore`}
                 schema={schema}

@@ -62,7 +62,7 @@ const SellWithUs = () => {
             <SEO
                 title="Sell With Us | LuminaReads"
                 description="Partner with LuminaReads to sell books and publish your titles through our online bookstore marketplace. Submit your book details today."
-                url="https://luminareads.com/sell-with-us"
+                url="https://book-store-application-using-mern-seven.vercel.app/sell-with-us"
                 keywords="sell books online, author collaboration, book publishing, partner with bookstore"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Sell With Us' }]} />
