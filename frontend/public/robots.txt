@@ -20,7 +20,6 @@ Disallow: /.git
 # Specific directives for Google
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
 # Specific directives for Bing
 User-agent: Bingbot
