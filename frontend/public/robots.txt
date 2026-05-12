@@ -1,34 +1,19 @@
-# Robots.txt for LuminaReads - Search Engine Optimization
-# Allow search engines to crawl the site
-
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Allow: /shop
-Allow: /categories
-Allow: /about
-Allow: /contact
-Allow: /blog
-Allow: /faq
+
 Disallow: /admin
-Disallow: /account
 Disallow: /admin/
+Disallow: /account
 Disallow: /private/
 Disallow: /.env
 Disallow: /node_modules
 Disallow: /.git
 
-# Specific directives for Google
 User-agent: Googlebot
 Allow: /
 
-# Specific directives for Bing
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
-# Specific directives for Facebook
-User-agent: facebookexternalhit
-Allow: /
-
-# Sitemap location
 Sitemap: https://book-store-application-using-mern-seven.vercel.app/sitemap.xml
