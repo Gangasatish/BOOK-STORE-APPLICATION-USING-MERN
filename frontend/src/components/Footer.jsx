@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-    const whatsappUrl = 'https://wa.me/919032729367?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
+    const whatsappUrl = 'https://wa.me/917981048680?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
 
     return (
         <footer className="bg-white dark:bg-dark-surface border-t border-gray-200 dark:border-dark-border mt-auto pt-16 pb-8 transition-colors duration-200">

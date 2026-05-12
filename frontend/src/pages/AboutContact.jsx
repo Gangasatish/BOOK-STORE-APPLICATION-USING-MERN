@@ -5,7 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import SEO from '../components/SEO';
 
 const AboutContact = () => {
-    const whatsappUrl = 'https://wa.me/919032729367?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
+    const whatsappUrl = 'https://wa.me/917981048680?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
     const [sent, setSent] = useState(false);
     const [form, setForm] = useState({
         firstName: '',
@@ -19,7 +19,7 @@ const AboutContact = () => {
         const text = `New Contact Message:%0AName: ${encodeURIComponent(
             `${form.firstName} ${form.lastName}`.trim()
         )}%0AEmail: ${encodeURIComponent(form.email)}%0AMessage: ${encodeURIComponent(form.message)}`;
-        const submitUrl = `https://wa.me/919032729367?text=${text}`;
+        const submitUrl = `https://wa.me/917981048680?text=${text}`;
         window.open(submitUrl, '_blank');
         setSent(true);
         setForm({ firstName: '', lastName: '', email: '', message: '' });
@@ -40,7 +40,7 @@ const AboutContact = () => {
         logo: 'https://book-store-application-using-mern-seven.vercel.app/logo.png',
         contactPoint: [{
             '@type': 'ContactPoint',
-            telephone: '+91-9032729367',
+            telephone: '+91-7981048680',
             contactType: 'customer support',
             areaServed: 'IN',
             availableLanguage: ['English'],
@@ -235,9 +235,12 @@ const AboutContact = () => {
                                         <Phone className="h-6 w-6 text-primary-600 dark:text-primary-400 mt-1" aria-hidden="true" />
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1">WhatsApp Support</h4>
+                                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Phone / WhatsApp</h4>
                                         <p className="text-gray-600 dark:text-gray-400">
-                                            Available 24/7 for your queries and support
+                                            <a href="tel:+917981048680" className="text-primary-600 dark:text-primary-400 hover:underline font-medium">
+                                                +91 79810 48680
+                                            </a>
+                                            <span className="block mt-1 text-sm">Available 24/7 for your queries and support</span>
                                         </p>
                                     </div>
                                 </div>
