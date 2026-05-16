@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Phone, Mail, Award, Users, BookOpen, Zap } from 'lucide-react';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SEO from '../components/SEO';
 
 const AboutContact = () => {
+    const location = useLocation();
+    const isContactPage = location.pathname === '/contact';
     const whatsappUrl = 'https://wa.me/917981048680?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
     const [sent, setSent] = useState(false);
     const [form, setForm] = useState({
@@ -55,10 +57,10 @@ const AboutContact = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
-                title="About LuminaReads | Your Online Bookstore"
-                description="Learn about LuminaReads, a curated bookstore for readers seeking bestselling and niche titles. Contact us for orders, support, and publishing inquiries."
-                url="https://book-store-application-using-mern-seven.vercel.app/about"
-                keywords="online bookstore, book delivery, bookshop contact, reading community, customer support"
+                title={isContactPage ? 'Contact Us | LuminaReads Online Bookstore' : 'About LuminaReads | Online Bookstore India'}
+                description={isContactPage ? 'Contact LuminaReads for order support, book inquiries, and publishing partnerships. Reach us via WhatsApp, email, or contact form.' : 'Learn about LuminaReads, India\'s curated online bookstore. Discover bestselling fiction, romance, fantasy & more with fast delivery and expert customer support.'}
+                url={isContactPage ? 'https://book-store-application-using-mern-seven.vercel.app/contact' : 'https://book-store-application-using-mern-seven.vercel.app/about'}
+                keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'online bookstore India, about LuminaReads, book delivery, bookshop, reading community, customer support'}
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'About' }]} />

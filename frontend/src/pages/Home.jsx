@@ -51,11 +51,11 @@ const Home = () => {
     return (
         <div>
             <SEO
-                title="LuminaReads | Discover Your Next Great Read"
-                description="Explore thousands of books across every genre and purchase your next favorite title from LuminaReads. Fast shipping and secure checkout."
+                title="Buy Books Online India | LuminaReads - Online Bookstore with Fast Delivery"
+                description="Buy books online in India at LuminaReads. Shop fiction, romance, fantasy, mystery & classics with fast delivery and cash on delivery. Discover thousands of titles across every genre."
                 url="https://book-store-application-using-mern-seven.vercel.app/"
                 image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
-                keywords="online bookstore, buy books online, best books, fiction books, non-fiction books"
+                keywords="buy books online, online bookstore India, buy books online India, fiction books, romance novels, fantasy books, mystery books, book delivery India, cash on delivery books, best books to read"
                 schema={schema}
             />
             {/* Hero Section */}
@@ -93,7 +93,7 @@ const Home = () => {
                             <div className="absolute inset-0 bg-primary-200 dark:bg-primary-900/40 rounded-full blur-3xl opacity-50 -z-10 transform translate-x-10 translate-y-10"></div>
                             <img
                                 src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop"
-                                alt="Reading"
+                                alt="Buy books online at LuminaReads - Stack of popular fiction and non-fiction books available for fast delivery in India"
                                 loading="lazy"
                                 decoding="async"
                                 className="rounded-2xl shadow-2xl object-cover h-[500px] w-full"

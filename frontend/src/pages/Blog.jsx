@@ -7,16 +7,19 @@ const posts = [
         title: 'How to Find the Perfect Book for Your Mood',
         excerpt: 'Discover smart ways to choose books that match your reading mood, interests, and goals, whether you want escape, inspiration, or skill-building.',
         slug: 'find-perfect-book',
+        date: '2026-05-10',
     },
     {
         title: 'Top 5 Must-Read Book Genres for Every Reader',
         excerpt: 'Explore the bestselling genres readers love, from fantasy and romance to thriller and personal development.',
         slug: 'must-read-book-genres',
+        date: '2026-05-08',
     },
     {
         title: 'Why Reading Daily Improves Focus and Creativity',
         excerpt: 'Learn how a small daily reading habit can transform your concentration, creativity, and long-term learning.',
         slug: 'daily-reading-benefits',
+        date: '2026-05-05',
     },
 ];
 
@@ -32,16 +35,21 @@ const Blog = () => {
             headline: post.title,
             description: post.excerpt,
             url: `https://book-store-application-using-mern-seven.vercel.app/blog#${post.slug}`,
+            datePublished: post.date,
+            author: {
+                '@type': 'Organization',
+                name: 'LuminaReads',
+            },
         })),
     };
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <SEO
-                title="Blog | LuminaReads"
-                description="Read expert book recommendations, genre guides, and reading tips from LuminaReads."
+                title="Book Recommendations & Reading Tips | LuminaReads Blog"
+                description="Read expert book recommendations, genre guides, and reading tips. Discover the best books to read in 2026, top fiction picks, and daily reading habits from LuminaReads."
                 url="https://book-store-application-using-mern-seven.vercel.app/blog"
-                keywords="book blog, reading tips, book recommendations, genre guides"
+                keywords="book recommendations, reading tips, best books to read, book blog, genre guides, daily reading habits, fiction recommendations, book buying tips"
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Blog' }]} />

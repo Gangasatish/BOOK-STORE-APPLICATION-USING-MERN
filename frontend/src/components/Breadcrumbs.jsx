@@ -1,6 +1,37 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
+const SITE_URL = 'https://book-store-application-using-mern-seven.vercel.app';
 
 const Breadcrumbs = ({ items }) => {
+    useEffect(() => {
+        const schema = {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: items.map((item, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: item.label,
+                item: item.path ? `${SITE_URL}${item.path}` : undefined,
+            })),
+        };
+
+        const id = 'breadcrumb-jsonld';
+        let el = document.head.querySelector(`script[id="${id}"]`);
+        if (!el) {
+            el = document.createElement('script');
+            el.setAttribute('type', 'application/ld+json');
+            el.setAttribute('id', id);
+            document.head.appendChild(el);
+        }
+        el.textContent = JSON.stringify(schema);
+
+        return () => {
+            const existing = document.head.querySelector(`script[id="${id}"]`);
+            if (existing) existing.remove();
+        };
+    }, [items]);
+
     return (
         <nav className="mb-6 text-sm text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
             <ol className="flex flex-wrap gap-2 items-center">

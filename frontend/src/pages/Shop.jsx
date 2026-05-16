@@ -50,10 +50,10 @@ const Shop = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
             <SEO
-                title={keyword ? `Search results for ${keyword} - LuminaReads` : 'Shop Books Online | LuminaReads'}
-                description={keyword ? `Search results for ${keyword} on LuminaReads. Browse our book collection across genres with fast delivery.` : 'Browse our full book collection across genres and find the perfect book for your next read on LuminaReads.'}
+                title={keyword ? `${keyword} - Books | LuminaReads` : 'Shop Books Online India | Browse All Genres - LuminaReads'}
+                description={keyword ? `Find "${keyword}" books on LuminaReads. Browse results with fast delivery across India, cash on delivery available.` : 'Shop books online at LuminaReads. Browse fiction, romance, fantasy, mystery, classics & more. Fast delivery across India with cash on delivery and secure checkout.'}
                 url={keyword ? `https://book-store-application-using-mern-seven.vercel.app/shop?keyword=${encodeURIComponent(keyword)}` : 'https://book-store-application-using-mern-seven.vercel.app/shop'}
-                keywords="buy books online, book categories, book shop, reading books"
+                keywords="shop books online, buy books online India, book categories, fiction books online, book shop India, cheap books online, book delivery India"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop' }]} />
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">

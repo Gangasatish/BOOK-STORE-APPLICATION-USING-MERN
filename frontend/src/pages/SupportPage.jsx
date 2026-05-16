@@ -5,6 +5,8 @@ import SEO from '../components/SEO';
 const topicContent = {
     faq: {
         title: 'Frequently Asked Questions',
+        metaDesc: 'Get answers to common questions about ordering books on LuminaReads. Learn about shipping times, order cancellation, international delivery, and payment options.',
+        metaKeywords: 'bookstore FAQ, order questions, how to order books online, book delivery questions, LuminaReads help',
         items: [
             { q: 'How long does shipping take?', a: 'Standard shipping usually takes 3 to 7 business days.' },
             { q: 'Can I cancel my order?', a: 'Yes, before it is marked as shipped. Contact support quickly for help.' },
@@ -13,6 +15,8 @@ const topicContent = {
     },
     shipping: {
         title: 'Shipping Information',
+        metaDesc: 'LuminaReads shipping policy: standard delivery in 3-7 days, express shipping in 1-2 days. Track your book order and get updates by email.',
+        metaKeywords: 'book shipping India, book delivery time, express book shipping, track book order, LuminaReads shipping policy',
         items: [
             { q: 'Standard Shipping', a: '3 to 7 business days for domestic orders.' },
             { q: 'Express Shipping', a: '1 to 2 business days where available.' },
@@ -21,6 +25,8 @@ const topicContent = {
     },
     returns: {
         title: 'Returns & Refunds',
+        metaDesc: 'LuminaReads returns policy: 14-day return window, books must be unused. Refunds processed within 5-10 business days. Easy hassle-free returns.',
+        metaKeywords: 'book returns policy, book refund, return books online, LuminaReads refund policy, 14-day returns',
         items: [
             { q: 'Return Window', a: 'Returns are accepted within 14 days of delivery.' },
             { q: 'Book Condition', a: 'Books should be unused and in original condition.' },
@@ -50,10 +56,10 @@ const SupportPage = ({ topic = 'faq' }) => {
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <SEO
-                title={`${content.title} | LuminaReads`}
-                description={`Get answers to common questions about shipping, returns, and order support from LuminaReads.`}
+                title={`${content.title} | LuminaReads Online Bookstore`}
+                description={content.metaDesc}
                 url={url}
-                keywords="bookstore support, shipping policy, returns policy, book order help"
+                keywords={content.metaKeywords}
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: content.title }]} />

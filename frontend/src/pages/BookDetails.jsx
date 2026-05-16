@@ -83,7 +83,7 @@ const BookDetails = () => {
                     <div className="lg:col-span-5 bg-gray-50 dark:bg-dark-bg p-8 md:p-12 flex justify-center items-center">
                         <img
                             src={book.image}
-                            alt={book.title}
+                            alt={`${book.title} by ${book.author} - Buy on LuminaReads`}
                             loading="lazy"
                             decoding="async"
                             onError={handleBookImageError}
