@@ -10,10 +10,4 @@ Disallow: /.env
 Disallow: /node_modules
 Disallow: /.git
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
 Sitemap: https://book-store-application-using-mern-seven.vercel.app/sitemap.xml
