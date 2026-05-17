@@ -10,9 +10,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'framer-motion': ['framer-motion'],
-          'axios': ['axios'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom']
         },
       },
     },
