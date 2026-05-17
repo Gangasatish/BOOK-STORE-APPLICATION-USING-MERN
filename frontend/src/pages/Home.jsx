@@ -21,9 +21,9 @@ const Home = () => {
     const schema = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        'name': 'LuminaReads',
+        'name': 'LuminaReads - Online Bookstore India',
         'url': 'https://book-store-application-using-mern-seven.vercel.app/',
-        'description': 'Explore thousands of books across every genre and shop online at LuminaReads.',
+        'description': 'Buy books online in India at best prices. Shop fiction, romance, fantasy, mystery, thriller, self-help, classics and more with fast delivery and cash on delivery.',
         'potentialAction': {
             '@type': 'SearchAction',
             'target': 'https://book-store-application-using-mern-seven.vercel.app/shop?keyword={search_term}',
@@ -85,11 +85,11 @@ const Home = () => {
     return (
         <div>
             <SEO
-                title="Buy Books Online India | LuminaReads - Online Bookstore with Fast Delivery"
-                description="Buy books online in India at LuminaReads. Shop fiction, romance, fantasy, mystery & classics with fast delivery and cash on delivery. Discover thousands of titles across every genre."
+                title="Buy Books Online India | Online Bookstore - Best Prices & Cash on Delivery | LuminaReads"
+                description="Buy books online in India at best prices. Shop fiction, romance, fantasy, mystery, thriller & self-help books with fast home delivery and cash on delivery. Order from 1000+ titles at affordable prices."
                 url="https://book-store-application-using-mern-seven.vercel.app/"
                 image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
-                keywords="buy books online, online bookstore India, buy books online India, fiction books, romance novels, fantasy books, mystery books, book delivery India, cash on delivery books, best books to read"
+                keywords="buy books online, buy books online India, online bookstore India, order books online, cheap books online India, book shop online, fiction books online, romance novels, best books to buy, cash on delivery books, books home delivery India, affordable books, bestseller books India, purchase books online"
                 schema={schema}
             />
             {/* Hero Section */}
@@ -103,10 +103,10 @@ const Home = () => {
                             className="space-y-6"
                         >
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                                Discover Your Next <span className="text-primary-600">Great Read</span>
+                                Buy Books Online in India at <span className="text-primary-600">Best Prices</span>
                             </h1>
                             <p className="text-lg text-gray-600 dark:text-gray-300 md:max-w-lg">
-                                Explore thousands of books across all categories. From gripping thrillers to insightful non-fiction, find the perfect book to inspire your imagination.
+                                Order from 1000+ books across fiction, romance, fantasy, mystery, thriller & more. Enjoy cash on delivery, free shipping above ₹500, and fast home delivery across India.
                             </p>
                             <div className="pt-4 flex gap-4">
                                 <Link to="/shop" className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2">
@@ -127,7 +127,7 @@ const Home = () => {
                             <div className="absolute inset-0 bg-primary-200 dark:bg-primary-900/40 rounded-full blur-3xl opacity-50 -z-10 transform translate-x-10 translate-y-10"></div>
                             <img
                                 src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop"
-                                alt="Buy books online at LuminaReads - Stack of popular fiction and non-fiction books available for fast delivery in India"
+                                alt="Buy books online India - Fiction, romance, fantasy, mystery and more books with cash on delivery and fast home delivery"
                                 loading="lazy"
                                 decoding="async"
                                 className="rounded-2xl shadow-2xl object-cover h-[500px] w-full"
@@ -142,8 +142,8 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-end mb-10">
                         <div>
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Trending Now</h2>
-                            <p className="text-gray-500 dark:text-gray-400">Our most popular books this week</p>
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Bestselling Books Online</h2>
+                            <p className="text-gray-500 dark:text-gray-400">Most popular books to buy this week — affordable prices with fast delivery</p>
                         </div>
                         <Link to="/shop" className="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1 group">
                             View All <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
@@ -157,7 +157,7 @@ const Home = () => {
             {/* Categories Banner */}
             <section className="py-20 bg-gray-50 dark:bg-dark-surface">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10">Popular Categories</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10">Shop Books by Category</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {['Fiction', 'Classic', 'Fantasy', 'Romance'].map((cat) => (
                             <Link

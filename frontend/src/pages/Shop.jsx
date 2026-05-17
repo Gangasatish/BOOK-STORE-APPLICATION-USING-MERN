@@ -46,10 +46,10 @@ const Shop = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
             <SEO
-                title={keyword ? `${keyword} - Books | LuminaReads` : 'Shop Books Online India | Browse All Genres - LuminaReads'}
-                description={keyword ? `Find "${keyword}" books on LuminaReads. Browse results with fast delivery across India, cash on delivery available.` : 'Shop books online at LuminaReads. Browse fiction, romance, fantasy, mystery, classics & more. Fast delivery across India with cash on delivery and secure checkout.'}
+                title={keyword ? `Buy ${keyword} Books Online India - Best Prices | LuminaReads` : 'Shop Books Online India | Buy Books at Best Prices - All Genres | LuminaReads'}
+                description={keyword ? `Buy "${keyword}" books online in India at best prices. Cash on delivery, free shipping above ₹500, fast home delivery.` : 'Buy books online in India at best prices. Browse 1000+ titles in fiction, romance, fantasy, mystery, thriller, self-help & more. Cash on delivery available. Free shipping above ₹500. Order books with fast home delivery across India.'}
                 url={keyword ? `https://book-store-application-using-mern-seven.vercel.app/shop?keyword=${encodeURIComponent(keyword)}` : 'https://book-store-application-using-mern-seven.vercel.app/shop'}
-                keywords="shop books online, buy books online India, book categories, fiction books online, book shop India, cheap books online, book delivery India"
+                keywords="buy books online India, shop books online, order books online India, cheap books online India, fiction books online, romance novels buy online, book shop India, affordable books India, book delivery India, cash on delivery books, best online bookstore India, purchase books"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop' }]} />
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
