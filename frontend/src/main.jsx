@@ -11,6 +11,12 @@ if (typeof requestIdleCallback === 'function') {
   setTimeout(() => initGA(), 1);
 }
 
+// Remove static SEO content to prevent duplicate H1 tags and content once React hydrates
+const seoContent = document.getElementById('seo-content');
+if (seoContent) {
+  seoContent.remove();
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
