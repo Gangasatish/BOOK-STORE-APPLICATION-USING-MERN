@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import SkeletonCard from '../components/SkeletonCard';
+import WakeUpScreen from '../components/WakeUpScreen';
+import ErrorCard from '../components/ErrorCard';
 import SEO from '../components/SEO';
 import { ArrowRight } from 'lucide-react';
-import api from '../lib/api';
+import api, { getFriendlyError, deduplicatedGet } from '../lib/api';
+import { useBackendWaking } from '../lib/backendWakeUp';
 
 const Home = () => {
     const [books, setBooks] = useState([]);
@@ -13,6 +16,7 @@ const Home = () => {
     const [error, setError] = useState(null);
     const [newsletterEmail, setNewsletterEmail] = useState('');
     const [newsletterSent, setNewsletterSent] = useState(false);
+    const isWaking = useBackendWaking();
 
     const schema = {
         '@context': 'https://schema.org',
@@ -27,25 +31,55 @@ const Home = () => {
         }
     };
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const { data } = await api.get('/books?paginate=true&limit=12');
-                setBooks(Array.isArray(data) ? data : (data.items || []));
-                setLoading(false);
-            } catch (err) {
-                setError(err.message);
-                setLoading(false);
-            }
-        };
-        fetchBooks();
+    const fetchBooks = useCallback(async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const { data } = await deduplicatedGet('/books?paginate=true&limit=12');
+            setBooks(Array.isArray(data) ? data : (data.items || []));
+        } catch (err) {
+            setError(getFriendlyError(err));
+        } finally {
+            setLoading(false);
+        }
     }, []);
+
+    useEffect(() => {
+        fetchBooks();
+    }, [fetchBooks]);
 
     const handleNewsletterSubmit = (e) => {
         e.preventDefault();
         if (!newsletterEmail.trim()) return;
         setNewsletterSent(true);
         setNewsletterEmail('');
+    };
+
+    // Determine what to show in the Trending Now section
+    const renderBookSection = () => {
+        if (isWaking && loading) {
+            return <WakeUpScreen inline />;
+        }
+
+        if (loading) {
+            return (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    {[...Array(5)].map((_, i) => <SkeletonCard key={i} />)}
+                </div>
+            );
+        }
+
+        if (error) {
+            return <ErrorCard error={error} onRetry={fetchBooks} fullWidth />;
+        }
+
+        return (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 animate-fade-in">
+                {books.slice(0, 5).map((book) => (
+                    <BookCard key={book._id} book={book} />
+                ))}
+            </div>
+        );
     };
 
     return (
@@ -116,19 +150,7 @@ const Home = () => {
                         </Link>
                     </div>
 
-                    {loading ? (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                            {[...Array(5)].map((_, i) => <SkeletonCard key={i} />)}
-                        </div>
-                    ) : error ? (
-                        <div className="bg-red-50 text-red-600 p-4 rounded-lg">{error}</div>
-                    ) : (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                            {books.slice(0, 5).map((book) => (
-                                <BookCard key={book._id} book={book} />
-                            ))}
-                        </div>
-                    )}
+                    {renderBookSection()}
                 </div>
             </section>
 
@@ -214,7 +236,7 @@ const Home = () => {
                         </button>
                     </form>
                     {newsletterSent && (
-                        <p className="mt-5 text-sm text-white/90">Thanks! You’re now on the list for exclusive book updates.</p>
+                        <p className="mt-5 text-sm text-white/90">Thanks! You're now on the list for exclusive book updates.</p>
                     )}
                 </div>
             </section>
