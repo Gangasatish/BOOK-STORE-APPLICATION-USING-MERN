@@ -47,7 +47,7 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <SEO
                 title="Book Recommendations, Reading Tips & Genre Guides | LuminaReads Blog"
-                description="Explore the LuminaReads blog for expert book recommendations, reading tips, and genre guides. Discover the best fiction books, romance novels, and affordable books to buy online in India."
+                description="Explore the LuminaReads blog for expert book recommendations, reading tips, and genre guides to help you find your next great read."
                 url="https://book-store-application-using-mern-seven.vercel.app/blog"
                 keywords="book recommendations, reading tips, best books to read, book blog, genre guides, daily reading habits, fiction recommendations, book buying tips"
                 schema={schema}
