@@ -1,4 +1,6 @@
-const SkeletonCard = () => {
+import { memo } from 'react';
+
+const SkeletonCard = memo(() => {
     return (
         <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-sm border border-gray-100 dark:border-dark-border overflow-hidden">
             <div className="relative aspect-3/4 bg-gray-200 dark:bg-gray-700 w-full overflow-hidden">
@@ -28,6 +30,8 @@ const SkeletonCard = () => {
             </div>
         </div>
     );
-};
+});
+
+SkeletonCard.displayName = 'SkeletonCard';
 
 export default SkeletonCard;

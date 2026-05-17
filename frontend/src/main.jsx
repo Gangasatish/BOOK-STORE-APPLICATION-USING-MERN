@@ -4,8 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import { initGA } from './utils/analytics.js'
 
-// Initialize Google Analytics 4
-initGA();
+// Defer GA4 initialization so it doesn't block first paint
+if (typeof requestIdleCallback === 'function') {
+  requestIdleCallback(() => initGA());
+} else {
+  setTimeout(() => initGA(), 1);
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

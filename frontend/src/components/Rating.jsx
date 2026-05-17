@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { Star, StarHalf } from 'lucide-react';
 
-const Rating = ({ value, text, color = "text-yellow-400" }) => {
+const Rating = memo(({ value, text, color = "text-yellow-400" }) => {
     return (
         <div className="flex items-center gap-1">
             <div className="flex">
@@ -19,6 +20,8 @@ const Rating = ({ value, text, color = "text-yellow-400" }) => {
             {text && <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">{text}</span>}
         </div>
     );
-};
+});
+
+Rating.displayName = 'Rating';
 
 export default Rating;

@@ -1,3 +1,4 @@
+import { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import { ShoppingCart } from 'lucide-react';
@@ -6,20 +7,20 @@ import { handleBookImageError } from '../utils/imageFallback';
 import { formatINR } from '../utils/currency';
 import { trackAddToCart, trackViewItem } from '../utils/analytics';
 
-const BookCard = ({ book }) => {
+const BookCard = memo(({ book }) => {
     const addToCart = useCartStore((state) => state.addToCart);
 
-    const handleAddToCart = (e) => {
+    const handleAddToCart = useCallback((e) => {
         e.preventDefault();
         addToCart({ ...book, qty: 1 });
         // Track add to cart event
         trackAddToCart(book._id, book.title, book.price);
-    };
+    }, [addToCart, book]);
 
-    const handleViewItem = () => {
+    const handleViewItem = useCallback(() => {
         // Track view item event
         trackViewItem(book._id, book.title, book.price);
-    };
+    }, [book._id, book.title, book.price]);
 
     return (
         <div className="group bg-white dark:bg-dark-surface rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100 dark:border-dark-border">
@@ -31,6 +32,9 @@ const BookCard = ({ book }) => {
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
+                    width={300}
+                    height={400}
+                    sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 20vw"
                 />
                 {book.countInStock === 0 && (
                     <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
@@ -78,6 +82,8 @@ const BookCard = ({ book }) => {
             </div>
         </div>
     );
-};
+});
+
+BookCard.displayName = 'BookCard';
 
 export default BookCard;

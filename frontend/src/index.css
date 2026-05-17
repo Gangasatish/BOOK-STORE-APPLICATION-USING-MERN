@@ -3,12 +3,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Metric-matched fallback font to prevent CLS when Inter loads */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 @layer base {
   body {
     background-color: #f9fafb;
     color: #111827;
-    font-family: 'Inter', 'Poppins', sans-serif;
+    font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
     transition: background-color 0.2s, color 0.2s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -32,6 +44,8 @@
     transparent 100%
   );
   animation: shimmer 1.8s ease-in-out infinite;
+  will-change: transform;
+  contain: strict;
 }
 
 :is(.dark *) .shimmer-overlay {
@@ -59,6 +73,38 @@
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+/* ─── Hero Section CSS Animations (replaces framer-motion on critical path) ── */
+@keyframes heroSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroImageIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-text-enter {
+  animation: heroSlideIn 0.6s ease-out forwards;
+}
+
+.hero-image-enter {
+  animation: heroImageIn 0.6s ease-out 0.15s forwards;
+  opacity: 0;
+}
+
 /* ─── Pulse Dot Animation ────────────────────────────────────────── */
 @keyframes pulseDot {
   0%, 100% {
@@ -84,12 +130,20 @@
   animation: pulseDot 2.5s ease-in-out infinite;
 }
 
+/* ─── Content Visibility for below-fold sections ─────────────────── */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
 /* ─── Accessibility: Reduced Motion ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .shimmer-overlay,
   .animate-fade-in,
   .animate-pulse-dot,
-  .wakeup-glow {
+  .wakeup-glow,
+  .hero-text-enter,
+  .hero-image-enter {
     animation: none !important;
     transition: none !important;
   }

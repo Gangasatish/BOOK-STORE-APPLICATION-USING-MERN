@@ -1,20 +1,19 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import ErrorBoundary from './components/ErrorBoundary';
 import Loader from './components/Loader';
 import { initBackendWakeUp } from './lib/backendWakeUp';
 
-// Critical routes — loaded eagerly
 import Home from './pages/Home';
-import Shop from './pages/Shop';
-import BookDetails from './pages/BookDetails';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
 
-// Non-critical routes — lazy loaded
+// Other routes lazy-loaded for smaller initial bundle
+const Footer = lazy(() => import('./components/Footer'));
+const Shop = lazy(() => import('./pages/Shop'));
+const BookDetails = lazy(() => import('./pages/BookDetails'));
+const Login = lazy(() => import('./pages/Login'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 const Cart = lazy(() => import('./pages/Cart'));
 const AdminBooks = lazy(() => import('./pages/AdminBooks'));
 const AboutContact = lazy(() => import('./pages/AboutContact'));
@@ -88,7 +87,9 @@ function App() {
                     <Suspense fallback={null}>
                         <WhatsAppFloat />
                     </Suspense>
-                    <Footer />
+                    <Suspense fallback={<footer className="h-64 bg-white dark:bg-dark-surface"></footer>}>
+                        <Footer />
+                    </Suspense>
                 </div>
             </ErrorBoundary>
         </Router>

@@ -103,6 +103,8 @@ const BookDetails = () => {
                     <div className="lg:col-span-5 bg-gray-50 dark:bg-dark-bg p-8 md:p-12 flex justify-center items-center">
                         <img src={book.image} alt={`${book.title} by ${book.author} - Buy on LuminaReads`}
                             loading="lazy" decoding="async" onError={handleBookImageError}
+                            width={400} height={600}
+                            sizes="(max-width: 768px) 90vw, (max-width: 1024px) 40vw, 35vw"
                             className="rounded-xl shadow-2xl max-h-125 object-contain hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-center">

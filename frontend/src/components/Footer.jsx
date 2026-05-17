@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
-const Footer = () => {
+const Footer = memo(() => {
     const whatsappUrl = 'https://wa.me/917981048680?text=Hi%2C%20I%20need%20help%20with%20my%20order.';
 
     return (
@@ -109,6 +110,8 @@ const Footer = () => {
             </div>
         </footer>
     );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

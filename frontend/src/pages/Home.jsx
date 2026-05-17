@@ -1,11 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion as Motion } from 'framer-motion';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import SkeletonCard from '../components/SkeletonCard';
-import WakeUpScreen from '../components/WakeUpScreen';
-import ErrorCard from '../components/ErrorCard';
 import SEO from '../components/SEO';
+import DeferredRender from '../components/DeferredRender';
+
+const WakeUpScreen = lazy(() => import('../components/WakeUpScreen'));
+const ErrorCard = lazy(() => import('../components/ErrorCard'));
+
 import { ArrowRight } from 'lucide-react';
 import api, { getFriendlyError, deduplicatedGet } from '../lib/api';
 import { useBackendWaking } from '../lib/backendWakeUp';
@@ -58,7 +60,11 @@ const Home = () => {
     // Determine what to show in the Trending Now section
     const renderBookSection = () => {
         if (isWaking && loading) {
-            return <WakeUpScreen inline />;
+            return (
+                <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading backend...</div>}>
+                    <WakeUpScreen inline />
+                </Suspense>
+            );
         }
 
         if (loading) {
@@ -70,7 +76,11 @@ const Home = () => {
         }
 
         if (error) {
-            return <ErrorCard error={error} onRetry={fetchBooks} fullWidth />;
+            return (
+                <Suspense fallback={<div className="text-center text-red-500 py-10">Failed to load books.</div>}>
+                    <ErrorCard error={error} onRetry={fetchBooks} fullWidth />
+                </Suspense>
+            );
         }
 
         return (
@@ -96,12 +106,8 @@ const Home = () => {
             <section className="bg-primary-50 dark:bg-dark-surface overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <Motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="space-y-6"
-                        >
+                        {/* Hero text — CSS animation instead of framer-motion */}
+                        <div className="space-y-6 hero-text-enter">
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                                 Buy Books Online in India at <span className="text-primary-600">Best Prices</span>
                             </h1>
@@ -116,130 +122,139 @@ const Home = () => {
                                     Browse Categories
                                 </Link>
                             </div>
-                        </Motion.div>
+                        </div>
 
-                        <Motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="relative hidden md:block"
-                        >
+                        {/* Hero image — CSS animation, eager load for LCP, responsive srcSet */}
+                        <div className="relative hidden md:block hero-image-enter">
                             <div className="absolute inset-0 bg-primary-200 dark:bg-primary-900/40 rounded-full blur-3xl opacity-50 -z-10 transform translate-x-10 translate-y-10"></div>
                             <img
                                 src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop"
+                                srcSet="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400&auto=format&fit=crop 400w, https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop 800w"
+                                sizes="(max-width: 768px) 400px, 800px"
                                 alt="Buy books online India - Fiction, romance, fantasy, mystery and more books with cash on delivery and fast home delivery"
-                                loading="lazy"
+                                loading="eager"
+                                fetchpriority="high"
                                 decoding="async"
+                                width={800}
+                                height={533}
                                 className="rounded-2xl shadow-2xl object-cover h-[500px] w-full"
                             />
-                        </Motion.div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Featured Books Section */}
-            <section className="py-20 bg-white dark:bg-dark-bg">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-end mb-10">
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Bestselling Books Online</h2>
-                            <p className="text-gray-500 dark:text-gray-400">Most popular books to buy this week — affordable prices with fast delivery</p>
-                        </div>
-                        <Link to="/shop" className="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1 group">
-                            View All <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                    </div>
-
-                    {renderBookSection()}
-                </div>
-            </section>
-
-            {/* Categories Banner */}
-            <section className="py-20 bg-gray-50 dark:bg-dark-surface">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10">Shop Books by Category</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {['Fiction', 'Classic', 'Fantasy', 'Romance'].map((cat) => (
-                            <Link
-                                key={cat}
-                                to={`/shop?category=${cat}`}
-                                className="bg-white dark:bg-dark-bg p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-dark-border group"
-                            >
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">{cat}</h3>
+            <DeferredRender minHeight="400px">
+                <section className="py-20 bg-white dark:bg-dark-bg">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-end mb-10">
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Bestselling Books Online</h2>
+                                <p className="text-gray-500 dark:text-gray-400">Most popular books to buy this week — affordable prices with fast delivery</p>
+                            </div>
+                            <Link to="/shop" className="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1 group">
+                                View All <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                             </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Blog Teaser */}
-            <section className="py-16 bg-gray-50 dark:bg-dark-surface">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">From the LuminaReads Blog</h2>
-                            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mt-2">
-                                Get reading advice, genre guides, and book-buying tips to help you find your next favorite title.
-                            </p>
                         </div>
-                        <Link to="/blog" className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-primary-700 transition-all">
-                            Visit Blog
-                        </Link>
-                    </div>
 
-                    <div className="grid gap-6 md:grid-cols-3">
-                        {[
-                            {
-                                title: 'How to Find the Perfect Book for Your Mood',
-                                excerpt: 'Discover smart ways to choose books that match your mood and reading goals.',
-                            },
-                            {
-                                title: 'Top 5 Must-Read Book Genres for Every Reader',
-                                excerpt: 'Explore the bestselling genres readers love, from fantasy to personal development.',
-                            },
-                            {
-                                title: 'Why Reading Daily Improves Focus and Creativity',
-                                excerpt: 'Learn how a small daily reading habit can transform focus and creative thinking.',
-                            },
-                        ].map((post, index) => (
-                            <article key={index} className="bg-white dark:bg-dark-bg rounded-3xl border border-gray-100 dark:border-dark-border p-6 shadow-sm hover:shadow-md transition-all">
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{post.title}</h3>
-                                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{post.excerpt}</p>
-                                <Link to="/blog" className="text-primary-600 hover:text-primary-700 font-semibold">
-                                    Read the article →
+                        {renderBookSection()}
+                    </div>
+                </section>
+            </DeferredRender>
+
+            {/* Categories Banner — content-visibility for deferred rendering */}
+            <DeferredRender minHeight="300px">
+                <section className="py-20 bg-gray-50 dark:bg-dark-surface cv-auto">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10">Shop Books by Category</h2>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {['Fiction', 'Classic', 'Fantasy', 'Romance'].map((cat) => (
+                                <Link
+                                    key={cat}
+                                    to={`/shop?category=${cat}`}
+                                    className="bg-white dark:bg-dark-bg p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-dark-border group"
+                                >
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">{cat}</h3>
                                 </Link>
-                            </article>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DeferredRender>
 
-            {/* Newsletter Signup */}
-            <section className="py-16 bg-primary-600 text-white">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay updated with new arrivals and offers</h2>
-                    <p className="max-w-2xl mx-auto text-gray-100 mb-8">
-                        Join our newsletter for curated book picks, exclusive discounts, and reading recommendations delivered straight to your inbox.
-                    </p>
-                    <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <input
-                            type="email"
-                            value={newsletterEmail}
-                            onChange={(e) => setNewsletterEmail(e.target.value)}
-                            placeholder="Enter your email address"
-                            className="w-full sm:max-w-xl px-5 py-4 rounded-full border border-white/20 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                            aria-label="Email for newsletter signup"
-                            required
-                        />
-                        <button type="submit" className="inline-flex items-center justify-center bg-white text-primary-600 font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors w-full sm:w-auto">
-                            Subscribe
-                        </button>
-                    </form>
-                    {newsletterSent && (
-                        <p className="mt-5 text-sm text-white/90">Thanks! You're now on the list for exclusive book updates.</p>
-                    )}
-                </div>
-            </section>
+            {/* Blog Teaser — content-visibility for deferred rendering */}
+            <DeferredRender minHeight="400px">
+                <section className="py-16 bg-gray-50 dark:bg-dark-surface cv-auto">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">From the LuminaReads Blog</h2>
+                                <p className="text-gray-600 dark:text-gray-400 max-w-2xl mt-2">
+                                    Get reading advice, genre guides, and book-buying tips to help you find your next favorite title.
+                                </p>
+                            </div>
+                            <Link to="/blog" className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-primary-700 transition-all">
+                                Visit Blog
+                            </Link>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-3">
+                            {[
+                                {
+                                    title: 'How to Find the Perfect Book for Your Mood',
+                                    excerpt: 'Discover smart ways to choose books that match your mood and reading goals.',
+                                },
+                                {
+                                    title: 'Top 5 Must-Read Book Genres for Every Reader',
+                                    excerpt: 'Explore the bestselling genres readers love, from fantasy to personal development.',
+                                },
+                                {
+                                    title: 'Why Reading Daily Improves Focus and Creativity',
+                                    excerpt: 'Learn how a small daily reading habit can transform focus and creative thinking.',
+                                },
+                            ].map((post, index) => (
+                                <article key={index} className="bg-white dark:bg-dark-bg rounded-3xl border border-gray-100 dark:border-dark-border p-6 shadow-sm hover:shadow-md transition-all">
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{post.title}</h3>
+                                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{post.excerpt}</p>
+                                    <Link to="/blog" className="text-primary-600 hover:text-primary-700 font-semibold">
+                                        Read the article →
+                                    </Link>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            </DeferredRender>
+
+            {/* Newsletter Signup — content-visibility for deferred rendering */}
+            <DeferredRender minHeight="300px">
+                <section className="py-16 bg-primary-600 text-white cv-auto">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Stay updated with new arrivals and offers</h2>
+                        <p className="max-w-2xl mx-auto text-gray-100 mb-8">
+                            Join our newsletter for curated book picks, exclusive discounts, and reading recommendations delivered straight to your inbox.
+                        </p>
+                        <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                            <input
+                                type="email"
+                                value={newsletterEmail}
+                                onChange={(e) => setNewsletterEmail(e.target.value)}
+                                placeholder="Enter your email address"
+                                className="w-full sm:max-w-xl px-5 py-4 rounded-full border border-white/20 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                aria-label="Email for newsletter signup"
+                                required
+                            />
+                            <button type="submit" className="inline-flex items-center justify-center bg-white text-primary-600 font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors w-full sm:w-auto">
+                                Subscribe
+                            </button>
+                        </form>
+                        {newsletterSent && (
+                            <p className="mt-5 text-sm text-white/90">Thanks! You're now on the list for exclusive book updates.</p>
+                        )}
+                    </div>
+                </section>
+            </DeferredRender>
         </div>
     );
 };
