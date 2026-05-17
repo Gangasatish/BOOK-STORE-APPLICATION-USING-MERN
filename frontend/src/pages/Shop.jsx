@@ -46,8 +46,8 @@ const Shop = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
             <SEO
-                title={keyword ? `Buy ${keyword} Books Online India - Best Prices | LuminaReads` : 'Shop Books Online India | Buy Books at Best Prices - All Genres | LuminaReads'}
-                description={keyword ? `Buy "${keyword}" books online in India at best prices. Cash on delivery, free shipping above ₹500, fast home delivery.` : 'Buy books online in India at best prices. Browse 1000+ titles in fiction, romance, fantasy, mystery, thriller, self-help & more. Cash on delivery available. Free shipping above ₹500. Order books with fast home delivery across India.'}
+                title={keyword ? `Buy ${keyword} Books Online | Best Prices | LuminaReads India` : 'Shop Bestselling Books Online | All Genres | LuminaReads India'}
+                description={keyword ? `Buy "${keyword}" books online in India at LuminaReads. Enjoy affordable prices, fast book delivery, and cash on delivery.` : 'Browse our massive collection and buy books online in India. Explore fiction, romance, mystery, and fantasy books at discounted prices. Enjoy fast book delivery and cash on delivery options nationwide.'}
                 url={keyword ? `https://book-store-application-using-mern-seven.vercel.app/shop?keyword=${encodeURIComponent(keyword)}` : 'https://book-store-application-using-mern-seven.vercel.app/shop'}
                 keywords="buy books online India, shop books online, order books online India, cheap books online India, fiction books online, romance novels buy online, book shop India, affordable books India, book delivery India, cash on delivery books, best online bookstore India, purchase books"
             />

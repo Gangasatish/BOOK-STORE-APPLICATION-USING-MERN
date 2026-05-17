@@ -95,8 +95,8 @@ const Home = () => {
     return (
         <div>
             <SEO
-                title="Buy Books Online India | Online Bookstore - Best Prices & Cash on Delivery | LuminaReads"
-                description="Buy books online in India at best prices. Shop fiction, romance, fantasy, mystery, thriller & self-help books with fast home delivery and cash on delivery. Order from 1000+ titles at affordable prices."
+                title="Buy Books Online in India | Affordable Online Bookstore | LuminaReads"
+                description="Discover the best website to buy novels online in India. LuminaReads offers affordable books, bestselling fiction, romance, and fantasy with cash on delivery and fast shipping. Shop books online today!"
                 url="https://book-store-application-using-mern-seven.vercel.app/"
                 image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
                 keywords="buy books online, buy books online India, online bookstore India, order books online, cheap books online India, book shop online, fiction books online, romance novels, best books to buy, cash on delivery books, books home delivery India, affordable books, bestseller books India, purchase books online"

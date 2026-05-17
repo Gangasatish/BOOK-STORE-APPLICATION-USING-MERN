@@ -5,7 +5,8 @@ import SEO from '../components/SEO';
 const topicContent = {
     faq: {
         title: 'Frequently Asked Questions',
-        metaDesc: 'Get answers to common questions about ordering books on LuminaReads. Learn about shipping times, order cancellation, international delivery, and payment options.',
+        metaTitle: 'FAQ & Support | Buy Books Online with Cash on Delivery | LuminaReads',
+        metaDesc: 'Have questions about how to order books online? Read our FAQ for information on fast book delivery in India, cash on delivery, and our hassle-free return policy at LuminaReads.',
         metaKeywords: 'bookstore FAQ, order questions, how to order books online, book delivery questions, LuminaReads help',
         items: [
             { q: 'How long does shipping take?', a: 'Standard shipping usually takes 3 to 7 business days.' },
@@ -56,7 +57,7 @@ const SupportPage = ({ topic = 'faq' }) => {
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <SEO
-                title={`${content.title} | LuminaReads Online Bookstore`}
+                title={content.metaTitle || `${content.title} | LuminaReads Online Bookstore`}
                 description={content.metaDesc}
                 url={url}
                 keywords={content.metaKeywords}

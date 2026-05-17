@@ -57,8 +57,8 @@ const AboutContact = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
-                title={isContactPage ? 'Contact Us | LuminaReads Online Bookstore' : 'About LuminaReads | Online Bookstore India'}
-                description={isContactPage ? 'Contact LuminaReads for order support, book inquiries, and publishing partnerships. Reach us via WhatsApp, email, or contact form.' : 'Learn about LuminaReads, India\'s curated online bookstore. Discover bestselling fiction, romance, fantasy & more with fast delivery and expert customer support.'}
+                title={isContactPage ? 'Contact Us | Customer Support & Help | LuminaReads Bookstore' : 'About Us | Best Online Bookstore in India | LuminaReads'}
+                description={isContactPage ? 'Contact LuminaReads for order support, book inquiries, and publishing partnerships. Our team ensures fast book delivery in India and hassle-free cash on delivery shopping experiences.' : 'Learn more about LuminaReads, your trusted online bookstore in India. We offer affordable books, curated collections, fast book delivery, and excellent customer service for book lovers nationwide.'}
                 url={isContactPage ? 'https://book-store-application-using-mern-seven.vercel.app/contact' : 'https://book-store-application-using-mern-seven.vercel.app/about'}
                 keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'online bookstore India, about LuminaReads, book delivery, bookshop, reading community, customer support'}
                 schema={schema}

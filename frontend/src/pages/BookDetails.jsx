@@ -88,8 +88,8 @@ const BookDetails = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
-            <SEO title={`${book.title} | LuminaReads`}
-                description={book.description?.slice(0, 155) || 'Explore this book on LuminaReads.'}
+            <SEO title={`Buy ${book.title} by ${book.author} Online | LuminaReads`}
+                description={`Buy ${book.title} by ${book.author} online in India at LuminaReads. Enjoy affordable prices, fast delivery, and cash on delivery on bestselling books. ${(book.description || '').slice(0, 60)}...`}
                 url={`https://book-store-application-using-mern-seven.vercel.app/book/${book._id}`}
                 image={book.image}
                 keywords={`${book.category}, buy ${book.title}, ${book.author}, online bookstore`}
