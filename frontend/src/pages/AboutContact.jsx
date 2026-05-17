@@ -57,10 +57,10 @@ const AboutContact = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
-                title={isContactPage ? 'Contact Us | Customer Support & Help | LuminaReads Bookstore' : 'About Us | Best Online Bookstore in India | LuminaReads'}
-                description={isContactPage ? 'Contact LuminaReads for order support, book inquiries, and publishing partnerships. Our team ensures fast book delivery in India and hassle-free cash on delivery shopping experiences.' : 'Learn more about LuminaReads, your trusted online bookstore in India. We offer affordable books, curated collections, fast book delivery, and excellent customer service for book lovers nationwide.'}
+                title={isContactPage ? 'Contact Us | Customer Support | Modern Bookworm Marketplace India' : 'About Us | Modern Bookworm Marketplace India | LuminaReads'}
+                description={isContactPage ? 'Contact LuminaReads for order support, book inquiries, and publishing partnerships. Our team ensures fast book delivery in India and hassle-free cash on delivery shopping experiences.' : 'Learn more about LuminaReads, the modern bookworm marketplace in India. We offer curated collections, fast book delivery, and a smart reader bookshop experience for bibliophiles nationwide.'}
                 url={isContactPage ? 'https://book-store-application-using-mern-seven.vercel.app/contact' : 'https://book-store-application-using-mern-seven.vercel.app/about'}
-                keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'online bookstore India, about LuminaReads, book delivery, bookshop, reading community, customer support'}
+                keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'modern bookworm marketplace India, online bookstore India, about LuminaReads, curated novel emporium online, smart reader bookshop India, affordable bibliophile bookstore'}
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'About' }]} />

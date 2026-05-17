@@ -23,9 +23,10 @@ const Home = () => {
     const schema = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        'name': 'LuminaReads - Online Bookstore India',
+        'name': 'LuminaReads - Modern Bookworm Marketplace India',
+        'alternateName': 'Curated Novel Emporium Online',
         'url': 'https://book-store-application-using-mern-seven.vercel.app/',
-        'description': 'Buy books online in India at best prices. Shop fiction, romance, fantasy, mystery, thriller, self-help, classics and more with fast delivery and cash on delivery.',
+        'description': 'Discover LuminaReads, the modern bookworm marketplace in India. Shop a curated collection of fiction, fantasy, and romance books with fast cash on delivery.',
         'potentialAction': {
             '@type': 'SearchAction',
             'target': 'https://book-store-application-using-mern-seven.vercel.app/shop?keyword={search_term}',
@@ -95,11 +96,11 @@ const Home = () => {
     return (
         <div>
             <SEO
-                title="Buy Books Online in India | Affordable Online Bookstore | LuminaReads"
-                description="Discover the best website to buy novels online in India. LuminaReads offers affordable books, bestselling fiction, romance, and fantasy with cash on delivery and fast shipping. Shop books online today!"
+                title="Modern Bookworm Marketplace India | Curated Books at LuminaReads"
+                description="Discover LuminaReads, the modern bookworm marketplace in India. Shop a curated collection of fiction, fantasy, and romance books with fast cash on delivery."
                 url="https://book-store-application-using-mern-seven.vercel.app/"
                 image="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=630&fit=crop"
-                keywords="buy books online, buy books online India, online bookstore India, order books online, cheap books online India, book shop online, fiction books online, romance novels, best books to buy, cash on delivery books, books home delivery India, affordable books, bestseller books India, purchase books online"
+                keywords="modern bookworm marketplace India, curated novel emporium online, smart reader bookshop India, affordable bibliophile bookstore, indie reading marketplace India, next-gen book discovery platform"
                 schema={schema}
             />
             {/* Hero Section */}
@@ -109,7 +110,7 @@ const Home = () => {
                         {/* Hero text — CSS animation instead of framer-motion */}
                         <div className="space-y-6 hero-text-enter">
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                                Buy Books Online in India at <span className="text-primary-600">Best Prices</span>
+                                Welcome to LuminaReads: The Modern <span className="text-primary-600">Bookworm Marketplace</span> in India
                             </h1>
                             <p className="text-lg text-gray-600 dark:text-gray-300 md:max-w-lg">
                                 Order from 1000+ books across fiction, romance, fantasy, mystery, thriller & more. Enjoy cash on delivery, free shipping above ₹500, and fast home delivery across India.
@@ -131,7 +132,7 @@ const Home = () => {
                                 src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop"
                                 srcSet="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400&auto=format&fit=crop 400w, https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop 800w"
                                 sizes="(max-width: 768px) 400px, 800px"
-                                alt="Buy books online India - Fiction, romance, fantasy, mystery and more books with cash on delivery and fast home delivery"
+                                alt="LuminaReads - A modern bookworm marketplace in India offering curated fiction and romance novels."
                                 loading="eager"
                                 fetchpriority="high"
                                 decoding="async"
@@ -252,6 +253,17 @@ const Home = () => {
                         {newsletterSent && (
                             <p className="mt-5 text-sm text-white/90">Thanks! You're now on the list for exclusive book updates.</p>
                         )}
+                    </div>
+                </section>
+            </DeferredRender>
+
+            {/* SEO Semantic Paragraph - Important for SERP Domination */}
+            <DeferredRender minHeight="150px">
+                <section className="py-12 bg-white dark:bg-dark-bg border-t border-gray-100 dark:border-dark-border">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Welcome to your new favorite reading destination. As a <strong>modern bookworm marketplace in India</strong>, LuminaReads is built for readers who crave quality and convenience. We step away from cluttered mega-stores to bring you a carefully <strong>curated novel emporium online</strong>. Whether you are hunting for gripping mystery thrillers, heartwarming romance, or epic fantasy, our <strong>smart reader bookshop</strong> offers affordable prices, reliable cash on delivery, and fast shipping across the country. Dive into our collection and experience the <strong>next-gen book discovery platform</strong> designed specifically for bibliophiles.
+                        </p>
                     </div>
                 </section>
             </DeferredRender>

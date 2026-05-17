@@ -19,10 +19,10 @@ const Categories = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <SEO
-                title="Browse Book Categories | Buy Fiction, Romance & Mystery Books Online"
-                description="Explore LuminaReads' extensive book categories. Buy fiction books, romance novels, fantasy, and classic literature online in India. Affordable online bookstore with fast delivery and cash on delivery!"
+                title="Browse Book Categories | Curated Novel Emporium Online | LuminaReads"
+                description="Explore the curated novel emporium at LuminaReads. Browse our modern bookworm marketplace by category including fiction, fantasy, romance, and mystery."
                 url="https://book-store-application-using-mern-seven.vercel.app/categories"
-                keywords="book categories, buy fiction books online India, romance novels online, fantasy books buy, mystery books India, science fiction books online, classic literature buy, book genres online, shop books by category, affordable books India"
+                keywords="curated novel emporium online, modern bookworm marketplace India, book categories, buy fiction books online, romance novels, fantasy books, mystery books, smart reader bookshop"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Book Categories</h1>

@@ -46,10 +46,10 @@ const Shop = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
             <SEO
-                title={keyword ? `Buy ${keyword} Books Online | Best Prices | LuminaReads India` : 'Shop Bestselling Books Online | All Genres | LuminaReads India'}
-                description={keyword ? `Buy "${keyword}" books online in India at LuminaReads. Enjoy affordable prices, fast book delivery, and cash on delivery.` : 'Browse our massive collection and buy books online in India. Explore fiction, romance, mystery, and fantasy books at discounted prices. Enjoy fast book delivery and cash on delivery options nationwide.'}
+                title={keyword ? `Shop ${keyword} Books | Modern Bookworm Marketplace India` : 'Shop Curated Books | Modern Bookworm Marketplace India'}
+                description={keyword ? `Search for "${keyword}" at LuminaReads, India's curated novel emporium. Find affordable books with fast delivery.` : 'Browse the smart reader bookshop in India. Shop our curated collection of fiction, romance, mystery, and fantasy books at the modern bookworm marketplace.'}
                 url={keyword ? `https://book-store-application-using-mern-seven.vercel.app/shop?keyword=${encodeURIComponent(keyword)}` : 'https://book-store-application-using-mern-seven.vercel.app/shop'}
-                keywords="buy books online India, shop books online, order books online India, cheap books online India, fiction books online, romance novels buy online, book shop India, affordable books India, book delivery India, cash on delivery books, best online bookstore India, purchase books"
+                keywords="modern bookworm marketplace, curated novel emporium online, smart reader bookshop India, affordable bibliophile bookstore, indie reading marketplace India, buy books online India"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop' }]} />
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
