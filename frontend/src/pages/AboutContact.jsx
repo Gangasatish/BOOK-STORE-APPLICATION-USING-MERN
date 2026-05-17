@@ -58,7 +58,7 @@ const AboutContact = () => {
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
                 title={isContactPage ? 'Contact Us | Customer Support | Modern Bookworm Marketplace India' : 'About Us | Modern Bookworm Marketplace India | LuminaReads'}
-                description={isContactPage ? 'Contact LuminaReads for order support, book inquiries, and publishing partnerships. Our team ensures fast book delivery in India and hassle-free cash on delivery shopping experiences.' : 'Learn more about LuminaReads, the modern bookworm marketplace in India. We offer curated collections, fast book delivery, and a smart reader bookshop experience for bibliophiles nationwide.'}
+                description={isContactPage ? 'Contact LuminaReads for order support and book inquiries. We ensure fast book delivery in India and hassle-free cash on delivery shopping experiences.' : 'Learn about LuminaReads, the modern bookworm marketplace in India. We offer curated collections, fast delivery, and a smart reader bookshop experience.'}
                 url={isContactPage ? 'https://book-store-application-using-mern-seven.vercel.app/contact' : 'https://book-store-application-using-mern-seven.vercel.app/about'}
                 keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'modern bookworm marketplace India, online bookstore India, about LuminaReads, curated novel emporium online, smart reader bookshop India, affordable bibliophile bookstore'}
                 schema={schema}
