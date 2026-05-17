@@ -285,8 +285,8 @@ const AboutContact = () => {
                         <Link to="/shop" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-all">
                             Browse Books
                         </Link>
-                        <Link to="/support" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
-                            Visit Support
+                        <Link to="/faq" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
+                            Visit FAQ
                         </Link>
                         <Link to="/categories" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-gray-900 dark:text-white border border-gray-200 dark:border-dark-border hover:bg-gray-100 transition-all">
                             Browse Categories
