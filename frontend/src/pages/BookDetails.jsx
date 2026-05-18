@@ -109,7 +109,7 @@ const BookDetails = () => {
                     </div>
                     <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-center">
                         <div className="text-sm font-semibold text-primary-600 dark:text-primary-500 uppercase tracking-widest mb-2">{book.category}</div>
-                        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">{book.title}</h1>
+                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">{book.title}</h2>
                         <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">by <span className="font-semibold">{book.author}</span></p>
                         <div className="flex items-center gap-4 mb-8">
                             <Rating value={book.rating} text={`${book.numReviews} reviews`} />

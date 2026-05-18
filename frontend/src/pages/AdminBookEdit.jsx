@@ -92,7 +92,7 @@ const AdminBookEdit = () => {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                         <p className="text-xs uppercase tracking-wide text-slate-300 mb-2">Admin Editor</p>
-                        <h1 className="text-3xl font-extrabold">{isCreateMode ? 'Create New Book' : 'Edit Book Details'}</h1>
+                        <h2 className="text-3xl font-extrabold">{isCreateMode ? 'Create New Book' : 'Edit Book Details'}</h2>
                         <p className="text-slate-200 mt-1">{isCreateMode ? 'Add a new book to your store catalog.' : 'Update pricing, category, stock, and content metadata.'}</p>
                     </div>
                     <Link

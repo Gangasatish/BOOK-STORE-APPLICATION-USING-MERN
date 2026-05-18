@@ -80,7 +80,7 @@ const AdminDashboard = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
             <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h2>
                 <div className="flex gap-3">
                     <Link to="/admin/books" className="px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700">Manage Books</Link>
                     <Link to="/admin/orders" className="px-4 py-2 rounded-lg bg-gray-100 text-gray-800 hover:bg-gray-200">Manage Orders</Link>

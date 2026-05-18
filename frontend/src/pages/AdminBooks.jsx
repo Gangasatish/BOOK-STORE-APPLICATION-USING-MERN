@@ -87,7 +87,7 @@ const AdminBooks = () => {
                             <Sparkles className="h-3.5 w-3.5" />
                             Admin Control
                         </p>
-                        <h1 className="text-3xl md:text-4xl font-extrabold">Book Management</h1>
+                        <h2 className="text-3xl md:text-4xl font-extrabold">Book Management</h2>
                         <p className="text-slate-200 mt-1">Create, edit, and organize your catalog in one place.</p>
                     </div>
                     <div className="flex flex-wrap gap-3">

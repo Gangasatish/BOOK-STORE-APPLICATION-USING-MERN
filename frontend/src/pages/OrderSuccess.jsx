@@ -29,7 +29,7 @@ const OrderSuccess = () => {
                     <CheckCircle2 className="h-11 w-11 text-emerald-600" />
                 </Motion.div>
 
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Order Placed Successfully</h1>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Order Placed Successfully</h2>
                 <p className="text-gray-600 mb-6">
                     Your order is confirmed and being processed.
                 </p>

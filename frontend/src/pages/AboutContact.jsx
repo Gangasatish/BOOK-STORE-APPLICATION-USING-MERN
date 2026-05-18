@@ -67,7 +67,7 @@ const AboutContact = () => {
             {/* Hero Section */}
             <section className="bg-linear-to-r from-primary-600 to-primary-800 dark:from-primary-900 dark:to-primary-950 text-white py-16 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">About LuminaReads</h1>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4">About LuminaReads</h2>
                     <p className="text-xl text-primary-100 max-w-2xl mx-auto">
                         Your premier destination for discovering, purchasing, and sharing great books
                     </p>

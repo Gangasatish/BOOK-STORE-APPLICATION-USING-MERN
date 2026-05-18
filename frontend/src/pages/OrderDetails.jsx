@@ -67,7 +67,7 @@ const OrderDetails = () => {
                 noindex
             />
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Order Details</h1>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Order Details</h2>
                 <Link to="/account" className="text-primary-600 hover:underline">Back to account</Link>
             </div>
 

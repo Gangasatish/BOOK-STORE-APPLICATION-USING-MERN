@@ -54,7 +54,7 @@ const Shop = () => {
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Shop' }]} />
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                         {keyword ? `Search Results for "${keyword}"` : 'All Books'}
                     </h1>
                     <p className="text-gray-500 dark:text-gray-400 mt-2">

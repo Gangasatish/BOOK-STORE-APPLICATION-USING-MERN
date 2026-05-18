@@ -55,7 +55,7 @@ const Blog = () => {
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Blog' }]} />
 
             <div className="text-center max-w-3xl mx-auto mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">LuminaReads Blog</h1>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">LuminaReads Blog</h2>
                 <p className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl leading-relaxed">
                     Fresh insights on books, reading habits, author recommendations, and tips to help you choose your next favorite read.
                 </p>

@@ -89,7 +89,7 @@ const SellWithUs = () => {
                         transition={{ duration: 0.6 }}
                         className="text-center max-w-3xl mx-auto"
                     >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                             Sell Your Books With <span className="text-primary-200">LuminaReads</span>
                         </h1>
                         <p className="text-lg md:text-xl text-primary-100 leading-relaxed mb-8">

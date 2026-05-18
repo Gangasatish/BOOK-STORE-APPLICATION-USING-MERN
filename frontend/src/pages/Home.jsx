@@ -109,7 +109,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         {/* Hero text — CSS animation instead of framer-motion */}
                         <div className="space-y-6 hero-text-enter">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                                 Welcome to LuminaReads: The Modern <span className="text-primary-600">Bookworm Marketplace</span> in India
                             </h1>
                             <p className="text-lg text-gray-600 dark:text-gray-300 md:max-w-lg">

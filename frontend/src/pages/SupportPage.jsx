@@ -64,7 +64,7 @@ const SupportPage = ({ topic = 'faq' }) => {
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: content.title }]} />
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{content.title}</h1>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{content.title}</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 Find fast, clear answers to shipping, returns, and order support questions. If you'd like extra help, our support team is ready to assist.
             </p>

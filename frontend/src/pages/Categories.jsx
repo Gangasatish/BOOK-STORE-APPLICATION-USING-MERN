@@ -25,7 +25,7 @@ const Categories = () => {
                 keywords="curated novel emporium online, modern bookworm marketplace India, book categories, buy fiction books online, romance novels, fantasy books, mystery books, smart reader bookshop"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Book Categories</h1>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Book Categories</h2>
             <p className="text-gray-500 dark:text-gray-400 mb-6">Select a genre to explore curated book collections and discover titles that match your next reading adventure.</p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">

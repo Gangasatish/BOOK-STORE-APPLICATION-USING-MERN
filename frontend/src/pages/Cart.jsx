@@ -124,7 +124,7 @@ const Cart = () => {
                 url="https://book-store-application-using-mern-seven.vercel.app/cart"
                 noindex
             />
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Shopping Cart</h1>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Shopping Cart</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <div className="lg:col-span-8">

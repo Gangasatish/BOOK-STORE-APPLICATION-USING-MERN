@@ -141,7 +141,7 @@ const Account = () => {
                     <div className="flex items-center gap-4">
                         <UserCircle className="h-14 w-14 text-blue-200" />
                         <div>
-                            <h1 className="text-3xl font-bold">My Account</h1>
+                            <h2 className="text-3xl font-bold">My Account</h2>
                             <p className="text-blue-100">{profile?.name || userInfo?.name} | {profile?.email || userInfo?.email}</p>
                         </div>
                     </div>

@@ -130,7 +130,7 @@ const AdminOrders = () => {
             <div className="rounded-3xl bg-linear-to-r from-slate-900 via-slate-800 to-indigo-900 p-7 md:p-8 text-white shadow-2xl mb-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-extrabold">Manage Orders</h1>
+                        <h2 className="text-3xl md:text-4xl font-extrabold">Manage Orders</h2>
                         <p className="text-slate-200 mt-1">Track payments, delivery, cancellations, and fulfillment updates.</p>
                     </div>
                     <Link to="/admin/books" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl font-semibold transition-colors">
