@@ -91,7 +91,7 @@ const SellWithUs = () => {
                     >
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                             Sell Your Books With <span className="text-primary-200">LuminaReads</span>
-                        </h1>
+                        </h2>
                         <p className="text-lg md:text-xl text-primary-100 leading-relaxed mb-8">
                             Are you an author or publisher? Partner with India's growing online bookstore and reach thousands of passionate readers.
                         </p>

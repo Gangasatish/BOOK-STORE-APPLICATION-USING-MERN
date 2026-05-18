@@ -23,7 +23,7 @@ const NotFound = () => {
                 {/* Content */}
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     Page Not Found
-                </h1>
+                </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
                     The page you're looking for doesn't exist. It might have been moved, deleted, or the URL might be incorrect.
                 </p>

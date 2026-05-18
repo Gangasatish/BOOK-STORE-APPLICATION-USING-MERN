@@ -111,7 +111,7 @@ const Home = () => {
                         <div className="space-y-6 hero-text-enter">
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                                 Welcome to LuminaReads: The Modern <span className="text-primary-600">Bookworm Marketplace</span> in India
-                            </h1>
+                            </h2>
                             <p className="text-lg text-gray-600 dark:text-gray-300 md:max-w-lg">
                                 Order from 1000+ books across fiction, romance, fantasy, mystery, thriller & more. Enjoy cash on delivery, free shipping above ₹500, and fast home delivery across India.
                             </p>

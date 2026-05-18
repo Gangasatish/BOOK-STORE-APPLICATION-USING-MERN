@@ -56,7 +56,7 @@ const Shop = () => {
                 <div>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                         {keyword ? `Search Results for "${keyword}"` : 'All Books'}
-                    </h1>
+                    </h2>
                     <p className="text-gray-500 dark:text-gray-400 mt-2">
                         {loading ? 'Loading books…' : `Showing ${books.length} result${books.length !== 1 ? 's' : ''}`}
                     </p>
