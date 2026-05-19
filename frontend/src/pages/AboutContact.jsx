@@ -57,10 +57,10 @@ const AboutContact = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
-                title={isContactPage ? 'Contact Us | Customer Support | Modern Bookworm Marketplace India' : 'About Us | Modern Bookworm Marketplace India | LuminaReads'}
-                description={isContactPage ? 'Contact LuminaReads for order support and book inquiries. We ensure fast book delivery in India and hassle-free cash on delivery shopping experiences.' : 'Learn about LuminaReads, the modern bookworm marketplace in India. We offer curated collections, fast delivery, and a smart reader bookshop experience.'}
+                title={isContactPage ? 'Contact Us | Customer Support | Curated Online Bookstore India' : 'About Us | Independent Book Marketplace India | LuminaReads'}
+                description={isContactPage ? 'Contact LuminaReads for order support and book inquiries. We ensure fast delivery for your aesthetic books online.' : 'Learn about LuminaReads, a curated online bookstore India and affordable bibliophile platform offering next-gen reader discovery.'}
                 url={isContactPage ? 'https://book-store-application-using-mern-seven.vercel.app/contact' : 'https://book-store-application-using-mern-seven.vercel.app/about'}
-                keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'modern bookworm marketplace India, online bookstore India, about LuminaReads, curated novel emporium online, smart reader bookshop India, affordable bibliophile bookstore'}
+                keywords={isContactPage ? 'contact bookstore, bookstore support, order help, LuminaReads contact' : 'curated online bookstore India, independent book marketplace India, handpicked fiction emporium, buy aesthetic books online, affordable bibliophile platform, next-gen reader discovery'}
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'About' }]} />
