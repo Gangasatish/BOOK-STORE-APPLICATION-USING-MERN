@@ -199,7 +199,8 @@ import booksData from '../data/books.js';
 const seedBooksData = async (req, res, next) => {
     try {
         // Find admin user
-        const adminUser = await User.findOne({ role: 'admin' });
+        let adminUser = await User.findOne({ isAdmin: true });
+        if (!adminUser) adminUser = await User.findOne({});
         const adminId = adminUser ? adminUser._id : null;
 
         // Get existing book titles
