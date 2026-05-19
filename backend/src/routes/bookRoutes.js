@@ -6,10 +6,13 @@ import {
     updateBook,
     deleteBook,
     createBookReview,
+    seedBooksData,
 } from '../controllers/bookController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
+
+router.route('/seed').post(seedBooksData);
 
 router.route('/').get(getBooks).post(protect, admin, createBook);
 router.route('/:id/reviews').post(protect, createBookReview);

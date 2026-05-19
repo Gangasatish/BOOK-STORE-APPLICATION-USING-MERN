@@ -1,4 +1,5 @@
 import Book from '../models/bookModel.js';
+import User from '../models/userModel.js';
 import { parsePagination } from '../utils/query.js';
 
 // @desc    Fetch all books
@@ -190,6 +191,36 @@ const createBookReview = async (req, res, next) => {
     }
 };
 
+import booksData from '../data/books.js';
+
+// @desc    Seed books safely
+// @route   POST /api/books/seed
+// @access  Public (temporary)
+const seedBooksData = async (req, res, next) => {
+    try {
+        // Find admin user
+        const adminUser = await User.findOne({ role: 'admin' });
+        const adminId = adminUser ? adminUser._id : null;
+
+        // Get existing book titles
+        const existingBooks = await Book.find({});
+        const existingTitles = existingBooks.map(b => b.title);
+
+        const newBooks = booksData.filter(b => !existingTitles.includes(b.title)).map(book => {
+            return { ...book, user: adminId };
+        });
+
+        if (newBooks.length > 0) {
+            await Book.insertMany(newBooks);
+            res.json({ message: `Successfully added ${newBooks.length} new books.`, inserted: newBooks.length });
+        } else {
+            res.json({ message: 'No new books to add, all 30 are already present.' });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
 export {
     getBooks,
     getBookById,
@@ -197,4 +228,5 @@ export {
     updateBook,
     deleteBook,
     createBookReview,
+    seedBooksData,
 };
