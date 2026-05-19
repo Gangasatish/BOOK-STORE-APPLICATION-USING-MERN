@@ -249,6 +249,218 @@ const seedBooks = [
       "Notes on startups and building truly new products.\n\nChallenges conventional advice around competition and innovation.",
     image:
       "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "Harry Potter and the Sorcerer's Stone",
+    author: "J.K. Rowling",
+    genre: "Fantasy",
+    price: 499,
+    stock: 25,
+    featured: true,
+    pages: 309,
+    language: "English",
+    publisher: "Scholastic",
+    publishedYear: 1997,
+    isbn: "9780590353427",
+    description: "A young boy discovers he is a wizard and attends a magical school.\n\nThe start of an epic journey.",
+    image: "https://images.unsplash.com/photo-1618666012174-83b441c0bc76?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Lord of the Rings",
+    author: "J.R.R. Tolkien",
+    genre: "Fantasy",
+    price: 799,
+    stock: 12,
+    pages: 1178,
+    language: "English",
+    publisher: "Allen & Unwin",
+    publishedYear: 1954,
+    isbn: "9780544003415",
+    description: "An epic high fantasy novel about a quest to destroy a powerful ring.\n\nA journey across Middle-earth.",
+    image: "https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Classic",
+    price: 349,
+    stock: 18,
+    pages: 281,
+    language: "English",
+    publisher: "J.B. Lippincott & Co.",
+    publishedYear: 1960,
+    isbn: "9780060935467",
+    description: "A novel about the serious issues of rape and racial inequality.\n\nTold from the perspective of a child in the South.",
+    image: "https://images.unsplash.com/photo-1587876931567-564ce588bfbd?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    genre: "Classic",
+    price: 299,
+    stock: 20,
+    pages: 208,
+    language: "English",
+    publisher: "Charles Scribner's Sons",
+    publishedYear: 1925,
+    isbn: "9780743273565",
+    description: "A tragic story of Jay Gatsby and his pursuit of Daisy Buchanan.\n\nA critique of the American Dream.",
+    image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    genre: "Romance",
+    price: 250,
+    stock: 15,
+    pages: 432,
+    language: "English",
+    publisher: "T. Egerton",
+    publishedYear: 1813,
+    isbn: "9781503290563",
+    description: "A romantic novel of manners.\n\nFollows the character development of Elizabeth Bennet.",
+    image: "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    genre: "Fantasy",
+    price: 399,
+    stock: 22,
+    pages: 310,
+    language: "English",
+    publisher: "George Allen & Unwin",
+    publishedYear: 1937,
+    isbn: "9780547928227",
+    description: "A children's fantasy novel about the quest of home-loving Bilbo Baggins.\n\nHe wins a share of the treasure guarded by a dragon.",
+    image: "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    genre: "Classic",
+    price: 279,
+    stock: 30,
+    pages: 234,
+    language: "English",
+    publisher: "Little, Brown and Company",
+    publishedYear: 1951,
+    isbn: "9780316769174",
+    description: "A novel about teenage angst and alienation.\n\nThe protagonist Holden Caulfield has become an icon for teenage rebellion.",
+    image: "https://images.unsplash.com/photo-1544822688-c5f41fa4bc8c?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Hunger Games",
+    author: "Suzanne Collins",
+    genre: "Young Adult",
+    price: 450,
+    stock: 14,
+    featured: true,
+    pages: 374,
+    language: "English",
+    publisher: "Scholastic",
+    publishedYear: 2008,
+    isbn: "9780439023481",
+    description: "A dystopian novel where children are forced to participate in a televised death match.\n\nA thrilling story of survival.",
+    image: "https://images.unsplash.com/photo-1502220802046-dfb0cd330d8c?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "Brave New World",
+    author: "Aldous Huxley",
+    genre: "Science Fiction",
+    price: 350,
+    stock: 19,
+    pages: 311,
+    language: "English",
+    publisher: "Chatto & Windus",
+    publishedYear: 1932,
+    isbn: "9780060850524",
+    description: "A dystopian social science fiction novel.\n\nExamines a futuristic society that revolves around science and efficiency.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "Fahrenheit 451",
+    author: "Ray Bradbury",
+    genre: "Science Fiction",
+    price: 320,
+    stock: 21,
+    pages: 249,
+    language: "English",
+    publisher: "Ballantine Books",
+    publishedYear: 1953,
+    isbn: "9781451673319",
+    description: "A dystopian novel presenting a future American society where books are outlawed.\n\nFiremen burn any that are found.",
+    image: "https://images.unsplash.com/photo-1542315053-5d55e0947738?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Da Vinci Code",
+    author: "Dan Brown",
+    genre: "Thriller",
+    price: 399,
+    stock: 16,
+    pages: 489,
+    language: "English",
+    publisher: "Doubleday",
+    publishedYear: 2003,
+    isbn: "9780307474278",
+    description: "A mystery thriller novel.\n\nFollows symbologist Robert Langdon and cryptologist Sophie Neveu.",
+    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Girl with the Dragon Tattoo",
+    author: "Stieg Larsson",
+    genre: "Thriller",
+    price: 410,
+    stock: 11,
+    pages: 465,
+    language: "English",
+    publisher: "Norstedts Förlag",
+    publishedYear: 2005,
+    isbn: "9780307454546",
+    description: "A psychological thriller novel.\n\nInvolves a disgraced journalist and a tattooed computer hacker.",
+    image: "https://images.unsplash.com/photo-1507676184212-d0330a151f14?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "Gone Girl",
+    author: "Gillian Flynn",
+    genre: "Thriller",
+    price: 380,
+    stock: 13,
+    pages: 432,
+    language: "English",
+    publisher: "Crown Publishing Group",
+    publishedYear: 2012,
+    isbn: "9780307588364",
+    description: "A thriller novel exploring a marriage gone terribly wrong.\n\nFull of twists and unreliable narration.",
+    image: "https://images.unsplash.com/photo-1518331393661-344421b8c1ec?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "The Fault in Our Stars",
+    author: "John Green",
+    genre: "Young Adult",
+    price: 310,
+    stock: 17,
+    pages: 313,
+    language: "English",
+    publisher: "Dutton Books",
+    publishedYear: 2012,
+    isbn: "9780525478812",
+    description: "A young adult novel about two teenagers who meet in a cancer support group.\n\nA touching and emotional story.",
+    image: "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    title: "Good Omens",
+    author: "Terry Pratchett & Neil Gaiman",
+    genre: "Fantasy",
+    price: 430,
+    stock: 9,
+    pages: 412,
+    language: "English",
+    publisher: "Victor Gollancz",
+    publishedYear: 1990,
+    isbn: "9780060853983",
+    description: "A comedy about the birth of the son of Satan and the coming of the End Times.\n\nAn angel and a demon try to sabotage it.",
+    image: "https://images.unsplash.com/photo-1505664177922-921d7b1a20ce?auto=format&fit=crop&w=900&q=80"
   }
 ];
 
@@ -271,7 +483,7 @@ const run = async () => {
     });
   }
 
-  console.log("Seed completed with 15 books. Admin: admin@leafline.dev / admin123");
+  console.log("Seed completed with 30 books. Admin: admin@leafline.dev / admin123");
   process.exit(0);
 };
 
