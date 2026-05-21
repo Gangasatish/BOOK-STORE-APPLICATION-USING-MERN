@@ -19,14 +19,14 @@ const Categories = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-screen">
             <SEO
-                title="Browse Book Categories | Curated Novel Emporium Online | LuminaReads"
-                description="Explore the curated novel emporium at LuminaReads. Browse our modern bookworm marketplace by category including fiction, fantasy, romance, and mystery."
+                title="Browse Book Categories | Handpicked Fiction Emporium | LuminaReads"
+                description="Explore our handpicked fiction emporium at LuminaReads, a curated online bookstore India. Browse our independent book marketplace by category — fiction, fantasy, romance, mystery, and more."
                 url="https://book-store-application-using-mern-seven.vercel.app/categories"
-                keywords="curated novel emporium online, modern bookworm marketplace India, book categories, buy fiction books online, romance novels, fantasy books, mystery books, smart reader bookshop"
+                keywords="curated online bookstore India, independent book marketplace India, handpicked fiction emporium, buy aesthetic books online, book categories, fiction books, romance novels, fantasy books, mystery books"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Book Categories</h2>
-            <p className="text-gray-500 dark:text-gray-400 mb-6">Select a genre to explore curated book collections and discover titles that match your next reading adventure.</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Select a genre to explore our handpicked fiction emporium and discover titles at India's curated online bookstore.</p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
                 {categories.map((category) => (

@@ -68,10 +68,10 @@ const SellWithUs = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
             <SEO
-                title="Sell Books Online | Author & Publisher Partnerships - LuminaReads"
-                description="Sell your books on LuminaReads. Partner with India's growing online bookstore to reach thousands of readers. Submit your book for collaboration — easy, fast, and free."
+                title="Sell Books Online | Partner With India's Curated Online Bookstore | LuminaReads"
+                description="Sell your books on LuminaReads, an independent book marketplace India. Partner with India's curated online bookstore and affordable bibliophile platform to reach thousands of readers."
                 url="https://book-store-application-using-mern-seven.vercel.app/sell-with-us"
-                keywords="sell books online India, author collaboration, publish books online, sell used books, partner with bookstore, book publishing India, author partnership"
+                keywords="sell books online India, curated online bookstore India, independent book marketplace India, author collaboration, publish books online, partner with bookstore"
             />
 
             {/* Hero Section */}
