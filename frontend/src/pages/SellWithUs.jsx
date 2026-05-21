@@ -71,7 +71,7 @@ const SellWithUs = () => {
                 title="Sell Books Online | Partner With India's Curated Online Bookstore | LuminaReads"
                 description="Sell your books on LuminaReads, an independent book marketplace India. Partner with India's curated online bookstore and affordable bibliophile platform to reach thousands of readers."
                 url="https://book-store-application-using-mern-seven.vercel.app/sell-with-us"
-                keywords="sell books online India, curated online bookstore India, independent book marketplace India, author collaboration, publish books online, partner with bookstore"
+                keywords="modern bookworm marketplace India, sell books online India, curated online bookstore India, independent book marketplace India, author collaboration, publish books online, partner with bookstore"
             />
 
             {/* Hero Section */}

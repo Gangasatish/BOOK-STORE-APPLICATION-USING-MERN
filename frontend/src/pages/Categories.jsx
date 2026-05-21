@@ -22,7 +22,7 @@ const Categories = () => {
                 title="Browse Book Categories | Handpicked Fiction Emporium | LuminaReads"
                 description="Explore our handpicked fiction emporium at LuminaReads, a curated online bookstore India. Browse our independent book marketplace by category — fiction, fantasy, romance, mystery, and more."
                 url="https://book-store-application-using-mern-seven.vercel.app/categories"
-                keywords="curated online bookstore India, independent book marketplace India, handpicked fiction emporium, buy aesthetic books online, book categories, fiction books, romance novels, fantasy books, mystery books"
+                keywords="modern bookworm marketplace India, curated online bookstore India, independent book marketplace India, handpicked fiction emporium, buy aesthetic books online, book categories, fiction books, romance novels, fantasy books, mystery books"
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Categories' }]} />
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Browse Book Categories</h2>

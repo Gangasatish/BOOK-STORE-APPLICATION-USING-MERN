@@ -49,7 +49,7 @@ const Blog = () => {
                 title="Book Recommendations & Reading Tips | Curated Online Bookstore India | LuminaReads Blog"
                 description="Explore the LuminaReads blog for expert book recommendations, reading tips, and genre guides. Your handpicked fiction emporium and affordable bibliophile platform."
                 url="https://book-store-application-using-mern-seven.vercel.app/blog"
-                keywords="curated online bookstore India, handpicked fiction emporium, book recommendations, reading tips, best books to read, book blog, genre guides, affordable bibliophile platform, next-gen reader discovery"
+                keywords="modern bookworm marketplace India, curated online bookstore India, handpicked fiction emporium, book recommendations, reading tips, best books to read, book blog, genre guides, affordable bibliophile platform, next-gen reader discovery"
                 schema={schema}
             />
             <Breadcrumbs items={[{ label: 'Home', path: '/' }, { label: 'Blog' }]} />
